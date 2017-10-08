@@ -19,13 +19,11 @@ class Course(models.Model):
                 ('l1', 'Licence 1'),
                 ('l2', 'Licence 2'),
                 ('l3', 'Licence 3'),
-            )
-        ),
+            )),
         ('Masters', (
                 ('m1', 'Masters 1'),
                 ('m2', 'Masters 2'),
-            )
-        ),
+            )),
     )
     code = models.UUIDField(primary_key=True, default=uuid.uuid4,
                             editable=False)

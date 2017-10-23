@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'apps.departement.apps.DepartementConfig',
     'apps.admission.apps.AdmissionConfig',
+    'apps.school.apps.SchoolConfig',
 ]
 
 MIDDLEWARE = [

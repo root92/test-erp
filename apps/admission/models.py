@@ -10,6 +10,7 @@ class Registration(models.Model):
         ('male', 'Male'),
         ('female', 'Female'),
     )
+
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICE)
@@ -28,8 +29,9 @@ class Registration(models.Model):
     school_origin = models.CharField(max_length=100, blank=True, null=True)
     registration_date = models.DateTimeField(auto_now_add=True)
     student_card = models.CharField(max_length=200, editable=False)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE,
-                                   related_name='registrations')
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='registrations')
+    
+
 
     class Meta:
         unique_together = ('email', 'student_card')

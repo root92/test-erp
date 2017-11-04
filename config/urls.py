@@ -13,17 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
 from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^admission/', include('admission.views.test')),
+    # url(r'^accueil/', views.home),
+    
 ]
 
 # Change admin site title
-admin.site.site_title = _("University Admin")
+admin.site.site_title = _("Administration de L'université")
 # Change admin site header
-admin.site.site_header = _("University Administration")
+admin.site.site_header = _("Administration de L'université")
 # Change admin index header
-admin.site.index_title = _("University Admin")
+admin.site.index_title = _("Administration de L'université")

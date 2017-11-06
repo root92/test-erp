@@ -1,0 +1,109 @@
+
+/*
+main colors
+*/
+/*color-right-sdie: #E5AFFC
+color-right-side: #BC38F4
+base-color: #72109C
+color-left-side -1: #908196
+color-left-side -2: #423946
+*/
+
+
+body{
+	font-family:'Open Sans', arial, sans-serif;
+	margin: 0;
+	padding:0;
+	
+	/*background-color: #E5AFFC;*/
+}
+
+.leftcontent{
+	color: white;
+	padding-top: 28.5rem;
+	text-align: center;
+	padding-left: 2.5%;
+	background:url('souleymane.jpg') no-repeat;
+	height: 70rem;
+	background-size: 100% auto;
+	line-height: 1.5;
+}
+
+.rightcontent{
+	color: #72109C ;
+	padding-left: 3rem;
+	line-height: 1.6;
+	font-weight: 400;
+	padding-right:5rem;
+	font-size: 1.4rem;
+}
+
+.rightcontent p:nth-of-type(5){
+	font-size: 1.35rem;
+	font-weight: 400;
+}
+.leftcontent p a {
+	font-weight: 700;
+	color: white;
+
+}
+.leftcontent p a:hover{
+	text-decoration: underline;
+	color: #E5AFFC;
+}
+.rightcontent p{
+	color:#000000;
+}
+
+button {
+	margin-top: 5rem;
+	margin-bottom: 2rem;
+	padding: 0.5rem 2rem;
+	font-size: 2rem;
+	text-transform: uppercase;
+	font-weight: 300;
+	/*background: linear-gradient(#E5AFFC, #BC38F4);*/
+	background-color:  #E5AFFC;
+	color: black;
+	border-radius: 1rem;
+	border: 0.1rem solid #72109C;
+	transition: background-color 0.6s;
+    transition: transform 0.4s;
+}
+
+button:hover{
+	transform:scale(1.1, 1.1);
+	background-color:#72109C ;
+}
+
+.name{ 
+	text-shadow: 0 .5rem .3rem #908196;
+	text-transform: uppercase;
+}
+
+.second{
+	background-color: #E5AFFC;
+	height: 70rem;
+	line-height: 1.6;
+}
+form{
+	width: 70%;
+	margin-top: 5%;
+
+}
+.form-element{
+	background-color: #E5AFFC;
+	border: 2px solid #ffffff;
+}
+.subm{
+	width: 20%;
+	background: #72109C;
+	padding: 1% 5%;
+	font-weight: 700;
+}
+.subm:hover{
+	background-color: #BC38F4;
+}
+
+
+

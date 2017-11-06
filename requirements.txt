@@ -5,3 +5,4 @@ flake8==3.3.0
 flake8-mypy==17.3.3
 django-countries==4.6.1
 django-extensions==1.9.0
+unipath==1.1

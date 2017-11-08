@@ -1,9 +1,126 @@
-{% extends 'core/base.html' %}
+{% include 'core/base.html' %}
 {% load static %}
 
 
 {% block content %}
+<div class="row">
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="{% url 'admission' %}" class="active"=>Inscription</a></li>
+        <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiant</a></li>
+        </ul>
+    </div>  
 
-tu fait tout ce qui concerne la saisie  ici
+    <div class="col-md-10">
+        <div class="page-header">
+            <ol class="breadcrumb">
+            <li><a href="#">Admission</a></li>
+            <li class="active">Liste des Saisies</li>
+            </ol>
+            <div class="row">
+            <div class="col-md-8">
+                <!-- <<a href="{% url 'newRegistration' %}">registration</a> -->
+                <a class="btn btn-primary btn-sm" href="{% url 'newRegistration' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create</a>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group input-group-sm">
+                <!-- <input type="text" class="form-control" aria-label="..."> -->
+                <input type="text" class="form-control" aria-label="..." >
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                    <li><input type="checkbox" aria-label="...">&nbsp;Date</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;Registree number</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;First Name</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;Last Name</li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                </div><!-- /input-group -->  
+            </div>
+            </div>
+        
+        </div>
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Registration List
+            </div>
+            <div class="panel-body">
+            <p>...</p>
+            </div>
+            <!-- <button type="button" class="btn btn-primary" (click)="onCreate">Create</button> -->
+            <!-- Table -->
+            <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                <th><input class="form-check-input" type="checkbox" value=""></th>
+                <th>DATE</th>
+                <th>Registree number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Menu</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        
+            </table>
+        
+            <!-- <app-registree-details [item]="selectedItem"></app-registree-details> -->
+        
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Add class level</h4>
+                </div>
+                <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                    <div class="alert alert-info" role="alert">
+                        Add class level <br/> Add class level <br/> Add class level <br/>
+                    </div>
+                    </div>
+                    <div class="col-md-8">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon" id="sizing-addon3">Batch Name</span>
+                        <input type="text" class="form-control" placeholder="Code Class level" name="name" [(ngModel)]="name" aria-describedby="sizing-addon3">
+                    </div>
+        
+                    <div class="input-group input-group-sm" style="padding-top: 10px">
+                        <span class="input-group-addon" id="sizing-addon3">Start date</span>
+                        <input type="text" class="form-control" placeholder="Class level" name="start_date" [(ngModel)]="start_date" aria-describedby="sizing-addon3">
+                    </div>
+        
+                    <div class="input-group input-group-sm" style="padding-top: 10px">
+                        <span class="input-group-addon" id="sizing-addon3">End date</span>
+                        <input type="text" class="form-control" placeholder="Class level" name="end_date" [(ngModel)]="end_date" aria-describedby="sizing-addon3">
+                    </div>
+        
+                    <div class="input-group input-group-sm" style="padding-top: 10px">
+                        <span class="input-group-addon" id="sizing-addon3" name="department">Departement</span>
+                        <select class="form-control">
+                        <option>----</option>
+                        <!-- <option *ngFor="let item of departments">{{item.name}}</option>  -->
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onCreate()">Create</button> -->
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -21,10 +21,18 @@
 	  	<span class="icon-bar"></span>
 	  </button>
 	  </div>
-	  <ul class="nav nav-tabs collapse navbar-collapse">
+	 
+	  <ul class="nav nav-tabs navbar-middle collapse navbar-collapse">
+	    <a class="navbar-brand" href="">University-brand</a>
         <li><a class="" href="{% url 'home' %}">Home</a></li>
-        <li><a class="" href="">Another element</a></li>
-        <a class="" href="{% url 'logout' %}">logout</a>
+        <li><a class="" href="{% url 'home-admission' %}">Admission</a></li>
+        <li><a class="" href="">Departements</a></li>
+        <li><a class="" href="">Etudiants</a></li>
+        <li><a class="" href="">Finances</a></li>
+        <li><a class="" href="">Configuration</a></li>
+
+        <a class="logged-in-user" href="">{{user.username}}</a>
+        <a class="nav-logout" href="{% url 'logout' %}">logout</a>
       </ul>
        
 

@@ -4,5 +4,5 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-     url(r'^$', views.admission, name='admission'),
+     url(r'^$', views.home_admission, name='home-admission'),
 ]

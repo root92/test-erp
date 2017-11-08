@@ -1,6 +1,29 @@
 {%extends "core/base.html"%}
+{% load staticfiles %}
 
 
 {%block content%}
-<h1>Welcome to gn-erp university management system</h1>
+
+<div class="container homepage-icons well"> 
+  <h3>Welcome to gn-erp university management system</h3>
+  <a href="{% url 'home-admission' %}">
+    <img src="{% static 'images/admissions.png' %}" alt="..." class="img-rounded">
+  </a>
+  <a href="">
+    <img src="{% static 'images/batchs.png' %}" alt="..." class="img-rounded">
+  </a>
+  <a href="">
+    <img src="{% static 'images/grade.png' %}" alt="..." class="img-rounded">
+  </a>
+  <a href="">
+    <img src="{% static 'images/fees.png' %}" alt="..." class="img-rounded">
+  </a>
+  <a href="">
+    <img src="{% static 'images/employees.png' %}" alt="..." class="img-rounded">
+  </a>
+  <a href="">
+    <img src="{% static 'images/settings.png' %}" alt="..." class="img-rounded">
+  </a>
+</div>
+
 {% endblock %}

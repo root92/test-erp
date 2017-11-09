@@ -16,3 +16,13 @@ def registration(request):
 def admission(request):
     
     return render(request, 'admission/admission.html')
+
+@login_required
+def newRegistration(request):
+    
+    return render(request, 'admission/newRegistrations.html')
+
+@login_required
+def newAdmission(request):
+    
+    return render(request, 'admission/newAdmission.html')

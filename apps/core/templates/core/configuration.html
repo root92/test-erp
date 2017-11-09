@@ -1,0 +1,28 @@
+{%extends "core/base.html"%}
+{% load staticfiles %}
+
+
+{%block content%}
+<app-navbar> </app-navbar>
+<div class="row">
+  <div class="col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li role="presentation"><a routerLink="school">School</a></li>
+      <li role="presentation"><a routerLink="users">Users</a></li>
+      <li role="presentation"><a routerLink="finances">Finances</a></li>
+      <li role="presentation"><a routerLink="dep-config">Departement</a></li>
+      <li role="presentation"><a routerLink="cours">Subjects</a></li>
+      <li role="presentation"><a routerLink="programme">Programme</a></li>
+      <li role="presentation"><a routerLink="instructeur">Employees</a></li>
+      <li role="presentation"><a routerLink="classe">Class levels</a></li>
+      <li role="presentation"><a routerLink="classe">Rooms</a></li>
+      <li role="presentation"><a routerLink="batch">Batch</a></li>
+    </ul>
+  </div>
+
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+{% endblock %}

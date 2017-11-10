@@ -1,8 +1,10 @@
 {% include 'core/base.html' %}
 {% load static %}
 
-
 {% block content %}
+
+{% if registrations %}
+
 <div class="row">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
@@ -20,7 +22,7 @@
             <div class="row">
             <div class="col-md-8">
                 <!-- <<a href="{% url 'newRegistration' %}">registration</a> -->
-                <a class="btn btn-primary btn-sm" href="{% url 'newRegistration' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create</a>
+                <a class="btn btn-primary btn-sm" href="{% url 'register' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create</a>
             </div>
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
@@ -122,5 +124,9 @@
         </div>
     </div>
 </div>
+
+{% else %}
+<h3>No registration yet</h3>
+{% endif %}
 
 {% endblock %}

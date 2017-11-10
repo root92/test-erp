@@ -28,8 +28,8 @@ urlpatterns = [
         name='login'),
     url(r'^home/$', core_views.home, name='home'),
     url(r'^logout', auth_views.logout, {'next_page': '/'}, name='logout'),
-    url(r'^admission', include('apps.admission.urls')),
-    url(r'^dep_home', include('apps.departement.urls')),
+    url(r'^admission/', include('apps.admission.urls')),
+    url(r'^dep_home/', include('apps.departement.urls')),
     
 ]
 

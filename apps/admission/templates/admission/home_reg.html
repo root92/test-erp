@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 {% load static %}
-
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -10,6 +12,8 @@
       <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiants</a></li>
     </ul>
   </div>
+
+ 
 
 </div>
 

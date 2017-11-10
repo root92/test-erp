@@ -1,11 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
-
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
 
 {% block content %}
-<!-- <a href="{% url 'registration' %}">registration</a>
-<a href="{% url 'admission' %}">registration</a> -->
-
 <div class="row">
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked">
@@ -13,6 +12,8 @@
       <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiants</a></li>
     </ul>
   </div>
+
+ 
 
 </div>
 

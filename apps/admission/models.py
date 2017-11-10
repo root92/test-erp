@@ -7,14 +7,14 @@ from apps.school.models import AcademicYear
 
 class Registration(models.Model):
     GENDER_CHOICE = (
-        ('male', 'Male'),
-        ('female', 'Female'),
+        ('homme', 'homme'),
+        ('femme', 'femme'),
     )
 
     OPTION_CHOICE = (
-        ('sm', 'SM'),
-        ('se', 'SE'),
-        ('ss', 'SS'),
+        ('sm', 'Sciences Mathématiques'),
+        ('se', 'Sciences Experimentales'),
+        ('ss', 'Sciences Sociales'),
     )
 
     registry_number = models.CharField(max_length=15, editable=False)

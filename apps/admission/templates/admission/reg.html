@@ -1,16 +1,20 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
+
 
 {% block content %}
-<div class="row">
+<div class="row container">
   <div class="col-md-2">
       <ul class="nav nav-pills nav-stacked">
-      <li role="presentation"><a href="{% url 'admission' %}" class="active"=>Inscriptions</a></li>
+      <li role="presentation"><a href="{% url 'admission' %}" class="active red"=>Inscriptions</a></li>
       <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiant</a></li>
       </ul>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 ">
     <div class="page-header">
         <ol class="breadcrumb">
           <li><a href="#">Admission</a></li>
@@ -26,7 +30,7 @@
         </div>
       {% endfor %}
     {% endif %}
-    <form action="{% url 'register'%}" method="POST" id="registration-form">
+    <form action="{% url 'register'%}" method="POST" class="registration-form">
       {% csrf_token %}
 
       <!-- {{ form.as_p}} -->
@@ -76,6 +80,14 @@
                   {{ form.address }}
                 </div>
               </div>
+              <div>
+                {{ form.phone_number.errors }}
+                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px">
+                  <span class="input-group-addon" id="sizing-addon3">Téléphone</span>
+                  {{ form.phone_number }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -105,11 +117,11 @@
               </div>
 
               <div>
-                {{ form.phone_number.errors }}
-                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                {{ form.id_card_number.errors }}
+                <span class="hide">{{ form.id_card_number.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px">
-                  <span class="input-group-addon" id="sizing-addon3">Téléphone</span>
-                  {{ form.phone_number }}
+                  <span class="input-group-addon" id="sizing-addon3">Numero Carte d'identité</span>
+                  {{form.id_card_number }}
                 </div>
               </div>
               <div>
@@ -120,17 +132,11 @@
                   {{ form.email }}
                 </div>
               </div>
+              
                
             </div>
             <div class="col-md-6">
-              <div>
-                {{ form.id_card_number.errors }}
-                <span class="hide">{{ form.id_card_number.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px">
-                  <span class="input-group-addon" id="sizing-addon3">Numero Carte d'identité</span>
-                  {{form.id_card_number }}
-                </div>
-              </div>
+              
               <div>
                 {{ form.school_origin.errors}}
                 <span class="hide">{{ form.school_origin.label_tag }}</span>
@@ -192,6 +198,7 @@
             <div class="input-group input-group-sm" style="padding-top: 10px">
               <span class="input-group-addon" id="sizing-addon3">Tuteur</span>
               {{ form.guardian_name }}
+            </div>
           </div>
           <div>
              {{ form.guardian_address.errors }}
@@ -223,6 +230,8 @@
 
 
        <button class="btn btn-success btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+
+       <p></p>
 
       
 

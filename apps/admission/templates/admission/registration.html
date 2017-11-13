@@ -5,7 +5,7 @@
 
 {% if registrations %}
 
-<div class="row">
+<div class="row container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
         <li role="presentation"><a href="{% url 'admission' %}" class="active"=>Inscription</a></li>
@@ -21,7 +21,6 @@
             </ol>
             <div class="row">
             <div class="col-md-8">
-                <!-- <<a href="{% url 'newRegistration' %}">registration</a> -->
                 <a class="btn btn-primary btn-sm" href="{% url 'register' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create</a>
             </div>
             <div class="col-md-4">
@@ -32,9 +31,9 @@
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
                     <li><input type="checkbox" aria-label="...">&nbsp;Date</li>
-                    <li><input type="checkbox" aria-label="...">&nbsp;Registree number</li>
-                    <li><input type="checkbox" aria-label="...">&nbsp;First Name</li>
-                    <li><input type="checkbox" aria-label="...">&nbsp;Last Name</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;Numero de saisie</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;Prenom</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;Nom</li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                     </ul>
@@ -56,15 +55,26 @@
             <table class="table table-bordered table-sm">
             <thead>
                 <tr>
-                <th><input class="form-check-input" type="checkbox" value=""></th>
+                <!-- <th><input class="form-check-input" type="checkbox" value=""></th> -->
+                <th scope="col">N<sup>o</sup></th>
                 <th>DATE</th>
-                <th>Registree number</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Menu</th>
-                </tr>
+                <th>Numero de saisie</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <!-- <th>Menu</th> -->
+             </tr>
             </thead>
             <tbody>
+                {% for registration in registrations %}
+            <tr>
+                <td scope="row">{{forloop.counter}}</td>
+                <td>{{registration.registration_add_date|date:"SHORT_DATE_FORMAT" }}</td>
+                <td><a href="" class="btn-detail" data-pk={{registration.pk}}>{{registration.registry_number}}</a></td>
+                <td>{{registration.first_name}}</td>
+                <td>{{registration.last_name}}</td>
+
+            </tr>
+            {% endfor %}
 
             </tbody>
         

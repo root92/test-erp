@@ -10,6 +10,7 @@ def home_admission(request):
     
     return render(request, 'admission/home_reg.html')
 
+#Implementing Registration process
 @login_required
 def registration(request):
 
@@ -22,11 +23,6 @@ def admission(request):
     
     return render(request, 'admission/admission.html')
 
-# implementing Registration form
-@login_required
-def newRegistration(request):
-
-    return render(request, 'admission/newRegistrations.html')
 
 @login_required
 def newAdmission(request):

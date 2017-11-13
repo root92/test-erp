@@ -5,6 +5,8 @@ from django_countries.fields import CountryField
 from apps.departement.models import Department
 from apps.school.models import AcademicYear
 
+import datetime
+
 class Registration(models.Model):
     GENDER_CHOICE = (
         ('homme', 'homme'),
@@ -17,7 +19,7 @@ class Registration(models.Model):
         ('ss', 'Sciences Sociales'),
     )
 
-    registry_number = models.CharField(max_length=15, editable=False)
+    registry_number = models.CharField(max_length=18, editable=False)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=6, choices=GENDER_CHOICE)
@@ -56,7 +58,7 @@ class Admission(models.Model):
     academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='registrations')
     fees = models.IntegerField()
-    matricule = models.CharField(max_length=15, editable=False)
+    matricule = models.CharField(max_length=18, editable=False)
     admission_add_date = models.DateTimeField(auto_now_add=True)
     admission_modify_date = models.DateTimeField(auto_now=True)
     
@@ -67,16 +69,26 @@ class Admission(models.Model):
 
 @receiver(pre_save, sender=Registration)
 def generate_student_card(sender, instance, *args, **kwargs):
-    prefix = 'OR/2017/00000'
-    if Registration.objects.last():
-        instance.registry_number = prefix + str(Registration.objects.last().id + 1)
+    prefix = "Reg-%d-%07d"
+    current_year = datetime.date.today().year
+    last_reg = Registration.objects.latest('id')
+    if not last_reg:
+        instance.registry_number = prefix % (current_year, 1)
     else:
-        instance.registry_number = prefix + '1'
+        last_id = last_reg.id
+        current_id = int(last_id) + 1
+        instance.registry_number = prefix % (current_year, current_id)
 
 @receiver(pre_save, sender=Admission)
 def generate_student_matricule(sender, instance, *args, **kwargs):
-    prefix = 'MAT/2017/00000'
-    if Admission.objects.last():
-        instance.matricule = prefix + str(Admission.objects.last().id + 1)
+    prefix = "Mat-%d-%07d"
+    current_year = datetime.date.today().year
+    last_adm = Admission.objects.latest('id')
+    if not last_adm:
+        instance.matricule = prefix % (current_year, 1)
     else:
-        instance.matricule = prefix + '1'
+        last_id = last_adm.id
+        current_id = int(last_id) + 1
+        instance.matricule = prefix % (current_year, current_id)
+
+

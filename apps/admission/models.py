@@ -1,7 +1,10 @@
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.urls import reverse #Used to generate urls by reversing the URL patterns
+
 from django_countries.fields import CountryField
+
 from apps.departement.models import Department
 from apps.school.models import AcademicYear
 
@@ -48,6 +51,15 @@ class Registration(models.Model):
 
     class Meta:
         unique_together = ('email', 'student_card')
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular registration instance.
+        """
+        return reverse('registration-detail', args=[str(self.id)])
+
+    def get_edit_url(self):
+        return reverse('edit-registration', args=[str(self.id)])
 
     def __str__(self):
         return '{0} {1}'.format(self.first_name, self.last_name)

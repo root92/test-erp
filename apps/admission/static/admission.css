@@ -45,3 +45,8 @@ form button{
 .detail-row{
 	margin-left: 10%;
 }
+
+/*PARTIAL REGISTRATION DELETE PAGE*/
+.js-delete-registration-form button{
+      width: 100px;
+}

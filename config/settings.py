@@ -140,3 +140,5 @@ STATIC_URL = '/static/'
 
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'home'
+
+# DATE_INPUT_FORMATS = ('%d-%m-%Y')

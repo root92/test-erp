@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Registration, Admission
+from .models import Registration, Admission, AdmissionProcess
 
 
 @admin.register(Registration)
@@ -33,8 +33,11 @@ class RegistrationAdmin(admin.ModelAdmin):
 @admin.register(Admission)
 class AdmissionAdmin(admin.ModelAdmin):
 
-    list_display = ('matricule', 'registry', 'academic_year', 'department', 'admission_add_date')
+    list_display = ('matricule', 'registry', 'academic_year', 'class_level', 'admission_add_date')
     list_filter = ('matricule','registry', 'admission_add_date' )
     date_hierarchy = 'admission_add_date'
     ordering = ('admission_add_date', )
     search_fields = ('matricule', 'registry')
+
+
+admin.site.register(AdmissionProcess)

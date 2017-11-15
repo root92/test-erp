@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
-from .models import Registration, Admission
-from .forms import RegistrationForm, AdmissionForm
+from .models import Registration, Admission, AdmissionProcess
+from .forms import RegistrationForm, AdmissionForm, AdmissionProcessForm
 
 # Create your views here.
 @login_required
@@ -68,10 +68,38 @@ def delete_registration(request, pk):
         data['html_form'] = render_to_string('admission/partial-registration-delete.html', context, request=request)
         return JsonResponse(data)
 
+# implement admission process list
+@login_required
+def admission_process(request):
+    
+    adprocess = AdmissionProcess.objects.all()
+    
+    return render(request, 'admission/admission-process.html', {'adprocess': adprocess})
+
+
+
+@login_required
+def new_admission_process(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        reg_form = AdmissionProcessForm(data=request.POST)
+        # check whether it's valid:
+        if reg_form.is_valid():
+            reg_form.save(commit=True)
+        return redirect('registration')
+    else:
+        form = AdmissionProcessForm()
+        return render(request, 'admission/new-admission-process.html', {'form': form})
+
+
+
+
 
 
 @login_required
 def admission(request):
+    
     
     return render(request, 'admission/admission.html')
 

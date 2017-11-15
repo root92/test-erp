@@ -7,12 +7,7 @@
 
 {% block content %}
 <div class="row detail-page">
-  <div class="col-md-2">
-      <ul class="nav nav-pills nav-stacked">
-      <li role="presentation"><a href="{% url 'admission' %}" class="active"=>Inscriptions</a></li>
-      <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiant</a></li>
-      </ul>
-  </div>
+  {% include 'admission/aside.html' %}
   <div class="col-md-10 detail-row">
     <div class="page-header">
         <ol class="breadcrumb">

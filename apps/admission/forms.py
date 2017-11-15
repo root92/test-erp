@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Registration, Admission
+from .models import Registration, Admission, AdmissionProcess
 
 class RegistrationForm(forms.ModelForm):
     class Meta:
@@ -19,7 +19,7 @@ class RegistrationForm(forms.ModelForm):
             'email': 'Email',
             'id_card_number': "Numéro Carte d'identité",
             'guardian_name': 'Nom du tuteur',
-            'guardian_phone': 'Numero de éléphone du tuteur',
+            'guardian_phone': 'Numero de téléphone du tuteur',
             'guardian_email': 'Email du tuteur',
             'guardian_address': 'Adresse du tuteur',
             'school_origin': "Ecole d'origine",
@@ -50,8 +50,25 @@ class RegistrationForm(forms.ModelForm):
         }
         
 
+class AdmissionProcessForm(forms.ModelForm):
+    class Meta:
+        model = AdmissionProcess
+        fields = '__all__'
+        labels = {
+            'registree': 'Personne saisie',
+            'payment_date': 'Date de paiement',
+            'registration_fees_paid': "Montant de frais d'inscription payé"
+            }
+        widgets = {
+            'registree': forms.Select(attrs={'class': 'form-control form-element'}),
+            'payment_date': forms.DateInput(attrs={'class': 'form-control form-element' }),
+            'registration_fees_paid': forms.TextInput(attrs={'class': 'form-control form-element' }),
+            }
+
+
 class AdmissionForm(forms.ModelForm):
     class Meta:
         model = Admission
         fields ='__all__'
+
 

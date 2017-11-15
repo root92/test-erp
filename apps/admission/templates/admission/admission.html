@@ -3,20 +3,16 @@
 
 
 {% block content %}
-<div class="row">
-    <div class="col-md-2">
-        <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a href="{% url 'admission' %}" class="active"=>Inscriptions</a></li>
-        <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiant</a></li>
-        </ul>
-    </div>
+<div class="row container">
+     {% include 'admission/aside.html' %}
     <div class="col-md-10">
     <div class="page-header">
             <ol class="breadcrumb">
             <li><a href="#">Admission</a></li>
-            <li class="active">List des Inscriptions</li>
+            <li class="active">Liste des Inscriptions</li>
             </ol>
-            <a class="btn btn-primary btn-sm" href="{% url 'newAdmission' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create</a>
+            <a class="btn btn-primary btn-sm" href="{% url 'newAdmission' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
+           
             <!-- <button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancel</button> -->
             <span class="pull-right">
             <div class="dropdown">
@@ -24,13 +20,13 @@
                 Plus
                 <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a href="#">Delete</a></li>
                 <li><a href="#">Class levels</a></li>
                 <li><a href="#">Teachers</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Separated link</a></li>
-            </ul>
+            </ul> -->
             </div>
             </span>
         
@@ -61,6 +57,13 @@
         
             </table>
         </div>
+         <div class="modal fade" id="modal-admission">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+          </div>
+        </div>
+      </div>
     </div>
 </div>
 {% endblock %}

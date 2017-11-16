@@ -142,3 +142,8 @@ LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'home'
 
 # DATE_INPUT_FORMATS = ('%d-%m-%Y')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+USE_THOUSAND_SEPARATOR = True

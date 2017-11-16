@@ -50,3 +50,15 @@ form button{
 .js-delete-registration-form button{
       width: 100px;
 }
+
+/*ADMISSION PROCESS*/
+
+.accepted{
+	background-color: green;
+	color: #fff;
+}
+
+.rejected{
+	background-color: red;
+	color: #fff;
+}

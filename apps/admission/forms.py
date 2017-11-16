@@ -56,11 +56,13 @@ class AdmissionProcessForm(forms.ModelForm):
         fields = '__all__'
         labels = {
             'registree': 'Personne saisie',
+            'department': 'Departement',
             'payment_date': 'Date de paiement',
             'registration_fees_paid': "Montant de frais d'inscription payé"
             }
         widgets = {
             'registree': forms.Select(attrs={'class': 'form-control form-element'}),
+            'department': forms.Select(attrs={'class': 'form-control form-element'}),
             'payment_date': forms.DateInput(attrs={'class': 'form-control form-element' }),
             'registration_fees_paid': forms.TextInput(attrs={'class': 'form-control form-element' }),
             }
@@ -70,5 +72,10 @@ class AdmissionForm(forms.ModelForm):
     class Meta:
         model = Admission
         fields ='__all__'
+        widgets = {
+            'registree': forms.Select(attrs={'class': 'form-control form-element'}),
+            'academic_year': forms.Select(attrs={'class': 'form-control form-element'}),
+            'class_level': forms.Select(attrs={'class': 'form-control form-element'}),
+        }
 
 

@@ -25,7 +25,7 @@
         </div>
       {% endfor %}
     {% endif %}
-    <form action="{% url 'admission-process'%}" method="POST" class="admission-process-form">
+    <form action="{% url 'new-admission-process'%}" method="POST" class="admission-process-form">
       {% csrf_token %}
 
       {{ form.as_p}}

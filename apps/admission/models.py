@@ -11,6 +11,12 @@ from apps.school.models import AcademicYear
 
 import datetime
 
+#Defining path to images
+def get_image_path(instance, filename):
+    return '/'.join(['student_images', str(instance.name), filename])
+
+
+#Generation a unique and autoincrement Registation number
 def registration_number():
     current_year = datetime.date.today().year
     prefix = "Reg-%d-%07d"
@@ -26,6 +32,8 @@ def registration_number():
         current_id = int(last_id) + 1
         return (prefix % (current_year, current_id))
 
+
+#Define Registration model
 class Registration(models.Model):
     GENDER_CHOICE = (
         ('homme', 'homme'),
@@ -81,6 +89,7 @@ class Registration(models.Model):
         return '{0} {1}'.format(self.first_name, self.last_name)
 
 
+#Generation a unique and autoincrement Matricule number for Student
 def student_number():
     current_year = datetime.date.today().year
     prefix = "Mat-%d-%07d"
@@ -96,10 +105,13 @@ def student_number():
         current_id = int(last_id) + 1
         return(prefix % (current_year, current_id))
 
+
+#Define Admission model
 class Admission(models.Model):
     registry = models.OneToOneField(Registration, on_delete=models.CASCADE)
     academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
     class_level = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, related_name='admissions')
+    image = models.ImageField(upload_to=' student_images', default='media/default.png')
     # fees = models.IntegerField()
     matricule = models.CharField(max_length=18, default=student_number, unique=True, editable=False)
     admission_add_date = models.DateTimeField(auto_now_add=True)
@@ -110,10 +122,18 @@ class Admission(models.Model):
         return '{0}'.format(self.registry)
 
 
+#Define Admission process, it is a prerequisite before being accepted into the universtity
 class AdmissionProcess(models.Model):
     registree = models.ForeignKey(Registration, on_delete=models.CASCADE)
     payment_date = models.DateField()
     registration_fees_paid = models.DecimalField(max_digits=32, decimal_places=2)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='admission_process')
+
+    # def get_absolute_url(self):
+    #     """
+    #     Returns the url to access a particular registration instance.
+    #     """
+    #     return reverse('admission-detail', args=[str(self.id)])
 
     def __str__(self):
         return(self.registree.registry_number)

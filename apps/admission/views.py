@@ -83,11 +83,12 @@ def new_admission_process(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        reg_form = AdmissionProcessForm(data=request.POST)
+        form = AdmissionProcessForm(data=request.POST)
         # check whether it's valid:
-        if reg_form.is_valid():
-            reg_form.save(commit=True)
-        return redirect('registration')
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('admission-process')
+
     else:
         form = AdmissionProcessForm()
         return render(request, 'admission/new-admission-process.html', {'form': form})
@@ -99,14 +100,33 @@ def new_admission_process(request):
 
 @login_required
 def admission(request):
-    
-    
-    return render(request, 'admission/admission.html')
+    admissions = Admission.objects.all()
+    return render(request, 'admission/admission.html', {'admissions': admissions})
 
 
 @login_required
-def newAdmission(request):
-    
-    return render(request, 'admission/newAdmission.html')
+def new_admission(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        reg_form = AdmissionForm(data=request.POST, files=request.FILES)
+        # check whether it's valid:
+        if reg_form.is_valid():
+            reg_form.save(commit=True)
+        return redirect('admission')
+    else:
+        form = AdmissionForm()
+        return render(request, 'admission/new-admission.html', {'form': form})
 
 
+# def confirm_admission(request, pk):
+#     data = dict()
+#     fee = AdmissionProcess.objects.get(pk=pk)
+#     if request.method == 'POST':
+#         # registration.delete()
+#         # return redirect('registration')
+#         print("cool")
+#     else:
+#         context ={'registration': registration}
+#         data['html_form'] = render_to_string('admission/partial-registration-delete.html', context, request=request)
+#         return JsonResponse(data)

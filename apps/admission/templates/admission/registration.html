@@ -60,7 +60,7 @@
              </tr>
             </thead>
             <tbody>
-                {% for registration in registrations %}
+            {% for registration in registrations %}
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
                 <td>{{registration.registration_add_date|date:"SHORT_DATE_FORMAT" }}</td>

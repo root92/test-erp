@@ -26,11 +26,11 @@ def new_registration(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        reg_form = RegistrationForm(data=request.POST)
+        reg_form = RegistrationForm(request.POST)
         # check whether it's valid:
         if reg_form.is_valid():
             reg_form.save(commit=True)
-        return redirect('registration')
+            return redirect('registration')
     else:
         form = RegistrationForm()
         return render(request, 'admission/new-registration.html', {'form': form})
@@ -83,11 +83,12 @@ def new_admission_process(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = AdmissionProcessForm(data=request.POST)
+        form = AdmissionProcessForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             form.save(commit=True)
-            return redirect('admission-process')
+        return redirect('admission-process')
+
 
     else:
         form = AdmissionProcessForm()
@@ -117,6 +118,13 @@ def new_admission(request):
     else:
         form = AdmissionForm()
         return render(request, 'admission/new-admission.html', {'form': form})
+
+
+@login_required
+def admission_detail(request, admission_id):
+    admission = Admission.objects.get(id=admission_id)
+    return render(request, 'admission/admission-detail.html', {'admission': admission})
+
 
 
 # def confirm_admission(request, pk):

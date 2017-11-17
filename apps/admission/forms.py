@@ -28,10 +28,10 @@ class RegistrationForm(forms.ModelForm):
             'pv': 'Pv'
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
+            'first_name': forms.TextInput(attrs={'class': 'form-control form-element', }),
             'last_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
             'gender': forms.Select(attrs={'class': 'form-control form-element'}),
-            'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element'}),
+            'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017'}),
             'nationality': forms.Select(attrs={'class': 'form-control form-element'}),
             'fathers_name': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'mothers_name': forms.TextInput(attrs={'class': 'form-control form-element'}),
@@ -63,7 +63,7 @@ class AdmissionProcessForm(forms.ModelForm):
         widgets = {
             'registree': forms.Select(attrs={'class': 'form-control form-element'}),
             'department': forms.Select(attrs={'class': 'form-control form-element'}),
-            'payment_date': forms.DateInput(attrs={'class': 'form-control form-element' }),
+            'payment_date': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017' }),
             'registration_fees_paid': forms.TextInput(attrs={'class': 'form-control form-element' }),
             }
 

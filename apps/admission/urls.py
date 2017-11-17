@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', views.home_admission, name='home-admission'),
     url(r'^admission$', views.admission, name='admission'), 
     url(r'^newAdmission$', views.new_admission, name='new-admission'),
+    url(r'^admission/([0-9]+)/$', views.admission_detail, name='admission-detail'),
     # url(r'^admission/confirm$', views.confirm_admission, name='confirm-admission'),
     url(r'^regisration$', views.registration, name='registration'),
     url(r'^newRegistration$', views.new_registration, name='register'),
@@ -21,10 +22,10 @@ urlpatterns = [
 
 
 
-# add to the bottom of your file
+#add to the bottom of your file
 if settings.DEBUG:
     urlpatterns += [
-        url(r'^media/(?P<path>.*)$', serve, {
+        url(r'^(?P<path>.*)$', serve, {
             'document_root': settings.MEDIA_ROOT,
         }),
     ]

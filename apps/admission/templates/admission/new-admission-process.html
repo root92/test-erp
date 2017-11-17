@@ -17,14 +17,6 @@
           <li class="active">Nouvelle processus</li>
         </ol>
     </div>
-    {% if form.non_field_errors %}
-      {% for error in form.non_field_errors %}
-        <div class="alert alert-danger alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          {{ error }}
-        </div>
-      {% endfor %}
-    {% endif %}
     <form action="{% url 'new-admission-process'%}" method="POST" class="admission-process-form">
       {% csrf_token %}
 
@@ -33,6 +25,7 @@
        <button class="btn btn-success btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
 
        <p></p>
+
 
       
 

@@ -57,7 +57,7 @@
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
                 <td>{{admission.admission_add_date|date:"SHORT_DATE_FORMAT" }}</td>
-                <td><a href="" class="">{{admission.matricule}}</a></td>
+                <td><a href="{{ admission.get_absolute_url }}" class="">{{admission.matricule}}</a></td>
                 <td>{{admission.registry.first_name}}</td>
                 <td>{{admission.registry.last_name}}</td>
 

@@ -26,14 +26,15 @@ def new_registration(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        reg_form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST)
         # check whether it's valid:
-        if reg_form.is_valid():
-            reg_form.save(commit=True)
+        if form.is_valid():
+            form.save(commit=True)
             return redirect('registration')
     else:
         form = RegistrationForm()
-        return render(request, 'admission/new-registration.html', {'form': form})
+
+    return render(request, 'admission/new-registration.html', {'form': form})
 
 
 # implementing Registration detai page
@@ -53,6 +54,7 @@ def edit_registration(request, registration_id):
             return redirect('registration')
     else:
         form = RegistrationForm(instance=registration)
+
     return render(request, 'admission/edit-registration.html', {'form': form})
 
 
@@ -66,7 +68,7 @@ def delete_registration(request, pk):
     else:
         context ={'registration': registration}
         data['html_form'] = render_to_string('admission/partial-registration-delete.html', context, request=request)
-        return JsonResponse(data)
+    return JsonResponse(data)
 
 # implement admission process list
 @login_required
@@ -87,12 +89,11 @@ def new_admission_process(request):
         # check whether it's valid:
         if form.is_valid():
             form.save(commit=True)
-        return redirect('admission-process')
-
-
+            return redirect('admission-process')
     else:
         form = AdmissionProcessForm()
-        return render(request, 'admission/new-admission-process.html', {'form': form})
+
+    return render(request, 'admission/new-admission-process.html', {'form': form})
 
 
 
@@ -114,10 +115,11 @@ def new_admission(request):
         # check whether it's valid:
         if reg_form.is_valid():
             reg_form.save(commit=True)
-        return redirect('admission')
+            return redirect('admission')
     else:
         form = AdmissionForm()
-        return render(request, 'admission/new-admission.html', {'form': form})
+
+    return render(request, 'admission/new-admission.html', {'form': form})
 
 
 @login_required

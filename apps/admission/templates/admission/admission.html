@@ -4,7 +4,6 @@
 
 {% block content %}
 
-{% if admissions %}
 <div class="row container">
      {% include 'admission/aside.html' %}
     <div class="col-md-10">
@@ -76,7 +75,5 @@
       </div>
     </div>
 </div>
-{% else %}
-<h3>pas encore d'admis</h3>
-{% endif %}
+
 {% endblock %}

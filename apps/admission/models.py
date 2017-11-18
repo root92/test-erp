@@ -74,6 +74,7 @@ class Registration(models.Model):
 
 
     class Meta:
+        ordering = ['-pk']
         unique_together = ('email', 'student_card')
         permissions = (("can_view_content", "Can see the specified content"),)
 
@@ -112,7 +113,7 @@ class Admission(models.Model):
     registry = models.OneToOneField(Registration, on_delete=models.CASCADE)
     academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
     class_level = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, related_name='admissions')
-    image = models.ImageField(upload_to='student_images', default='default.png')
+    image = models.ImageField(upload_to='student_images', default='avatar.png')
     # fees = models.IntegerField()
     matricule = models.CharField(max_length=18, default=student_number, unique=True, editable=False)
     admission_add_date = models.DateTimeField(auto_now_add=True)

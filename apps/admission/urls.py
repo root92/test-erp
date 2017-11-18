@@ -2,6 +2,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
+from django.conf.urls.static import static
+
 
 from . import views
 
@@ -22,10 +24,7 @@ urlpatterns = [
 
 
 
-#add to the bottom of your file
-if settings.DEBUG:
-    urlpatterns += [
-        url(r'^(?P<path>.*)$', serve, {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-    ]
+
+
+
+

@@ -21,11 +21,5 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='admission',
             name='fees',
-        ),
-        migrations.AddField(
-            model_name='admission',
-            name='class_level',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='admissions', to='departement.ClassRoom'),
-            preserve_default=False,
-        ),
+        )
     ]

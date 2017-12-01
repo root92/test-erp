@@ -3,7 +3,6 @@
 
 {% block content %}
 
-{% if registrations %}
 
 <div class="row container">
      {% include 'admission/aside.html' %}
@@ -40,7 +39,7 @@
         </div>
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading">Registration List
+            <div class="panel-heading">Liste des personnes saisies
             </div>
             <div class="panel-body">
             <p>...</p>
@@ -79,59 +78,8 @@
         
         </div>
         
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridSystemModalLabel">Add class level</h4>
-                </div>
-                <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-4">
-                    <div class="alert alert-info" role="alert">
-                        Add class level <br/> Add class level <br/> Add class level <br/>
-                    </div>
-                    </div>
-                    <div class="col-md-8">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon" id="sizing-addon3">Batch Name</span>
-                        <input type="text" class="form-control" placeholder="Code Class level" name="name" [(ngModel)]="name" aria-describedby="sizing-addon3">
-                    </div>
-        
-                    <div class="input-group input-group-sm" style="padding-top: 10px">
-                        <span class="input-group-addon" id="sizing-addon3">Start date</span>
-                        <input type="text" class="form-control" placeholder="Class level" name="start_date" [(ngModel)]="start_date" aria-describedby="sizing-addon3">
-                    </div>
-        
-                    <div class="input-group input-group-sm" style="padding-top: 10px">
-                        <span class="input-group-addon" id="sizing-addon3">End date</span>
-                        <input type="text" class="form-control" placeholder="Class level" name="end_date" [(ngModel)]="end_date" aria-describedby="sizing-addon3">
-                    </div>
-        
-                    <div class="input-group input-group-sm" style="padding-top: 10px">
-                        <span class="input-group-addon" id="sizing-addon3" name="department">Departement</span>
-                        <select class="form-control">
-                        <option>----</option>
-                        <!-- <option *ngFor="let item of departments">{{item.name}}</option>  -->
-                        </select>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="onCreate()">Create</button> -->
-                </div>
-            </div>
-            </div>
-        </div>
+    
     </div>
 </div>
-
-{% else %}
-<h3>No registration yet</h3>
-{% endif %}
 
 {% endblock %}

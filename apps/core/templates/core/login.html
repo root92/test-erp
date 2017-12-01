@@ -5,7 +5,7 @@
 {%block content%}
 
 <div class="container well login-form">
-<h2 class="form-signin-heading text-center">Please Sign in</h2>
+<h2 class="form-signin-heading text-center">Se connecter</h2>
     {% if form.non_field_errors %}
       {% for error in form.non_field_errors %}
         <div class="alert alert-danger alert-dismissable">
@@ -18,7 +18,7 @@
       <form method="post" action="{% url 'login' %}" role="form">
         {% csrf_token %}
         <div class="form-group{% if form.username.errors %} has-error{% endif %}">
-          <label for="username">{% trans 'Username' %}</label>
+          <label for="username">Nom d'utilisateur</label>
           <input type="text" class="form-control" id="username" name="username">
           {% for error in form.username.errors %}
             <label class="control-label">{{ error }}</label>
@@ -32,7 +32,7 @@
           {% endfor %}
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-lg btn-primary">Se Connecter</button>
          
       </form>
     </div>

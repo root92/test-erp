@@ -1,14 +1,37 @@
+body{
+	font-size: 16px;
+}
 
 /* NAVBAR*/
+header {
+	margin-bottom: 10%;
+}
 
+nav .btn-default{
+	padding-right:80%;
+}
+
+.navigation{
+	padding: 1% 0 1% 0;
+}
 .navbar-default .navbar-brand {
-	margin-right: 15%;
 	color: #23527c;
 }
 
-.logged-in-user{
-	padding-right: 1%;
+.navbar-default .main-nav>li>a {
+    color: #23527c;
+    font-size: 15px;
+    font-weight: 400;
 }
+
+.navbar-default .navbar-right>li>a{
+	color: #23527c;
+}
+
+.navbar-form{
+   margin-left: 15%;
+}
+
 
 .logged-in-user:hover, .nav-logout:hover{
 	text-decoration: none;
@@ -34,4 +57,13 @@
 	height: 30%;
 	margin: 1% 1%;
 }
+
+/*.homepage-icons ul li{
+	display: inline-block;
+	width: 50px;
+	height: 40px;
+	background-color: red;
+	font-size: 100px;
+	padding: 10px 10px ;
+}*/
 

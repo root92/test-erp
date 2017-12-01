@@ -17,6 +17,9 @@ from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from django.views.static import serve
+from django.conf.urls.static import static
 
 from apps.core import views as core_views
 from . import views
@@ -30,9 +33,19 @@ urlpatterns = [
     url(r'^logout', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^admission/', include('apps.admission.urls')),
     url(r'^dep_home/', include('apps.departement.urls')),
-    url(r'^student_list/', include('apps.students.urls')),
+    # url(r'^student_list/', include('apps.students.urls')),
     
 ]
+
+
+#add to the bottom of your file
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
+
 
 # Change admin site title
 admin.site.site_title = _("Administration de L'université")

@@ -1,0 +1,225 @@
+{% include 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row container">
+     {% include 'admission/aside.html' %}
+
+    <div class="col-md-10">
+      <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Liste des saisie</a></li>
+          <li class="active">Edit {{ registration.registry_number}}</li>
+        </ol>
+      </div>
+      <form action="{% url 'edit-registration' form.instance.id %}" method="post" role="form">
+        {% csrf_token %}
+        <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+              <!-- <img src="../../../assets/images/avatar.png" alt="..." class="img-responsive img-thumb>
+              <button class="btn btn-default" type="s>Choisir un fichier</button> -->
+            </div>
+
+            <div class="col-md-8">
+
+              <div class="">
+                {{ form.first_name.errors }}
+                <span class="hide">{{ form.first_name.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Prenom</span>
+                {{ form.first_name}}
+                </div>
+                {{forms.erros}}
+              </div>
+
+              <div>
+                {{ form.last_name.errors }}
+                <span class="hide">{{ form.last_name.label_tag }}</span>
+              <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Nom</span>
+                {{form.last_name}}
+              </div>
+              </div>
+
+              <div>
+                {{ form.gender.errors }}
+                <span class="hide">{{ form.gender.label_tag }}</span>
+              <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Genre</span>
+                {{ form.gender }}
+              </div>
+              </div>
+
+              <div>
+                {{ form.address.errors }}
+                <span class="hide">{{ form.address.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Adresse</span>
+                  {{ form.address }}
+                </div>
+              </div>
+              <div>
+                {{ form.phone_number.errors }}
+                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Téléphone</span>
+                  {{ form.phone_number }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div>
+                {{ form.date_of_birth.errors }}
+                <span class="hide">{{ form.date_of_birth.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Date de naissance</span>
+                  {{form.date_of_birth}}
+                </div>
+              </div>
+
+              <div>
+                {{ form.nationality.errors }}
+                <span class="hide">{{ form.nationality.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Nationalité</span>
+                  {{ form.nationality }}
+                </div>
+              </div>
+
+              <div>
+                {{ form.id_card_number.errors }}
+                <span class="hide">{{ form.id_card_number.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Numero Carte d'identité</span>
+                  {{form.id_card_number }}
+                </div>
+              </div>
+              <div>
+                {{ form.email.errors }}
+               <span class="hide"> {{ form.email.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Email</span>
+                  {{ form.email }}
+                </div>
+              </div>
+              
+               
+            </div>
+            <div class="col-md-6">
+              
+              <div>
+                {{ form.school_origin.errors}}
+                <span class="hide">{{ form.school_origin.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Ecole d'origine</span>
+                  {{ form.school_origin }}
+                </div>
+              </div>
+              <div>
+                {{ form.year_admission_bac.errors}}
+                <span class="hide">{{ form.year_admission_bac.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Année Baccalauréat</span>
+                  {{ form.year_admission_bac }}
+                </div>
+              </div>
+              <div>
+                {{ form.pv.errors }}
+                <span class="hide">{{ form.pv.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">PV Baccalauréat</span>
+                  {{ form.pv}}
+                </div>
+              </div>
+              <div>
+                {{ form.option.errors}}
+                <span class="hide">{{ form.option.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Options</span>
+                  {{ form.option}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div>
+            {{ form.fathers_name.errors }}
+            <span class="hide">{{ form.fathers_name.label_tag }}</span>
+            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+              <span class="input-group-addon " id="sizing-addon3">Nom du Père</span>
+              {{ form.fathers_name }}
+            </div>
+          </div>
+          <div>
+            {{ form.mothers_name.errors }}
+            <span class="hide">{{ form.mothers_name.label_tag }}</span>
+            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+              <span class="input-group-addon " id="sizing-addon3">Nom de la mère</span>
+              {{ form.mothers_name }}
+            </div>
+          </div>
+          <div>
+            {{ form.guardian_name.errors }}
+            <span class="hide">{{ form.guardian_name.label_tag }}</span>
+            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+              <span class="input-group-addon " id="sizing-addon3">Tuteur</span>
+              {{ form.guardian_name }}
+            </div>
+          </div>
+          <div>
+             {{ form.guardian_address.errors }}
+            <span class="hide">{{ form.guardian_address.label_tag }}</span>
+            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+              <span class="input-group-addon " id="sizing-addon3">Adresse du tuteur</span>
+              {{ form.guardian_address }}
+            </div>
+          </div>
+          <div>
+            {{ form.guardian_phone.errors }}
+            <span class="hide">{{ form.guardian_phone.label_tag }}</span>
+            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+              <span class="input-group-addon " id="sizing-addon3">Téléphone du tuteur</span>
+              {{ form.guardian_phone }}
+            </div>
+          </div>
+          <div>
+           {{ form.guardian_email.errors }}
+           <span class="hide">{{ form.guardian_email.label_tag }}</span>
+            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+              <span class="input-group-addon " id="sizing-addon3">Email du tuteur</span>
+              {{ form.guardian_email}}
+            </div>
+          </div>
+    
+        </div>
+      </div>
+
+
+       <button class="btn btn-success btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+
+       <p></p>
+
+      </form>
+        
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="row container">
+   {% include 'admission/aside.html' %}
+  <div class="col-md-10 ">
+    <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Liste des processus d'admission</a></li>
+          <li class="active">Nouvelle processus</li>
+        </ol>
+    </div>
+    <form action="{% url 'new-admission-process'%}" method="POST" class="admission-process-form">
+      {% csrf_token %}
+
+      {{ form.as_p}}
+
+       <button class="btn btn-success btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+
+       <p></p>
+
+
+      
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+

@@ -14,6 +14,7 @@ import os
 # from unipath import Path
 MASTER_BASE_DIR = os.path.dirname(__file__)
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'django_countries',
     'django_extensions',
     'apps.departement.apps.DepartementConfig',
@@ -122,19 +124,32 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'home'
+
+DATE_FORMAT= 'j, N Y'
+
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d', '%d/%m/%Y', '%d/%m/%Y', # '2006-10-25', '25/10/2006', '25/06/06'
+    '%d-%m-%Y','%d-%m-%y'      # '10-25-2006', '10-25-06'
+    ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+

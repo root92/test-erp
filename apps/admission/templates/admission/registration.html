@@ -6,12 +6,7 @@
 {% if registrations %}
 
 <div class="row container">
-    <div class="col-md-2">
-        <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a href="{% url 'admission' %}" class="active"=>Inscription</a></li>
-        <li role="presentation"><a href="{% url 'registration' %}">Saisie Etudiant</a></li>
-        </ul>
-    </div>  
+     {% include 'admission/aside.html' %}
 
     <div class="col-md-10">
         <div class="page-header">
@@ -21,7 +16,7 @@
             </ol>
             <div class="row">
             <div class="col-md-8">
-                <a class="btn btn-primary btn-sm" href="{% url 'register' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Create</a>
+                <a class="btn btn-primary btn-sm" href="{% url 'register' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
             </div>
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
@@ -65,11 +60,11 @@
              </tr>
             </thead>
             <tbody>
-                {% for registration in registrations %}
+            {% for registration in registrations %}
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
-                <td>{{registration.registration_add_date|date:"SHORT_DATE_FORMAT" }}</td>
-                <td><a href="" class="btn-detail" data-pk={{registration.pk}}>{{registration.registry_number}}</a></td>
+                <td>{{registration.registration_add_date|date:"DATE_FORMAT" }}</td>
+                <td><a href="{{ registration.get_absolute_url }}" class="">{{registration.registry_number}}</a></td>
                 <td>{{registration.first_name}}</td>
                 <td>{{registration.last_name}}</td>
 

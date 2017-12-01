@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Registration, Admission
+from .models import Registration, Admission, AdmissionProcess
 
 class RegistrationForm(forms.ModelForm):
     class Meta:
@@ -19,7 +19,7 @@ class RegistrationForm(forms.ModelForm):
             'email': 'Email',
             'id_card_number': "Numéro Carte d'identité",
             'guardian_name': 'Nom du tuteur',
-            'guardian_phone': 'Numero de éléphone du tuteur',
+            'guardian_phone': 'Numero de téléphone du tuteur',
             'guardian_email': 'Email du tuteur',
             'guardian_address': 'Adresse du tuteur',
             'school_origin': "Ecole d'origine",
@@ -28,10 +28,10 @@ class RegistrationForm(forms.ModelForm):
             'pv': 'Pv'
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
+            'first_name': forms.TextInput(attrs={'class': 'form-control form-element', }),
             'last_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
             'gender': forms.Select(attrs={'class': 'form-control form-element'}),
-            'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element'}),
+            'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017'}),
             'nationality': forms.Select(attrs={'class': 'form-control form-element'}),
             'fathers_name': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'mothers_name': forms.TextInput(attrs={'class': 'form-control form-element'}),
@@ -50,8 +50,32 @@ class RegistrationForm(forms.ModelForm):
         }
         
 
+class AdmissionProcessForm(forms.ModelForm):
+    class Meta:
+        model = AdmissionProcess
+        fields = '__all__'
+        labels = {
+            'registree': 'Personne saisie',
+            'department': 'Departement',
+            'payment_date': 'Date de paiement',
+            'registration_fees_paid': "Montant de frais d'inscription payé"
+            }
+        widgets = {
+            'registree': forms.Select(attrs={'class': 'form-control form-element'}),
+            'department': forms.Select(attrs={'class': 'form-control form-element'}),
+            'payment_date': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017' }),
+            'registration_fees_paid': forms.TextInput(attrs={'class': 'form-control form-element' }),
+            }
+
+
 class AdmissionForm(forms.ModelForm):
     class Meta:
         model = Admission
         fields ='__all__'
+        widgets = {
+            'registree': forms.Select(attrs={'class': 'form-control form-element'}),
+            'academic_year': forms.Select(attrs={'class': 'form-control form-element'}),
+            'class_level': forms.Select(attrs={'class': 'form-control form-element'}),
+        }
+
 

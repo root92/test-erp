@@ -15,3 +15,6 @@ def index(request):
 @login_required
 def home(request):
     return render(request, 'core/home.html')
+
+
+

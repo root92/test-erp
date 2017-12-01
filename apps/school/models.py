@@ -25,7 +25,7 @@ class AcademicYear(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     label = models.CharField(max_length=10)
-    school_name = models.ForeignKey(School, on_delete=models.CASCADE)
+    # school_name = models.ForeignKey(School, on_delete=models.CASCADE)
     academicYear_add_date = models.DateTimeField(auto_now_add=True)
     academicYear_modify_date = models.DateTimeField(auto_now=True)
 

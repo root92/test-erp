@@ -9,7 +9,7 @@ class Department(models.Model):
     description = models.TextField(default='The best department')
     admission_fees = models.IntegerField()
     fees = models.IntegerField()
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    # school = models.ForeignKey(School, on_delete=models.CASCADE)
     department_add_date = models.DateTimeField(auto_now_add=True)
     department_modify_date = models.DateTimeField(auto_now=True)
 

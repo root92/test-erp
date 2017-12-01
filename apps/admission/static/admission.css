@@ -1,6 +1,9 @@
+
+/* REGISTRATION FORM*/
  .hide{
 	display: none;
 }
+
 
 .registration-form{
 	padding-bottom: 2%;
@@ -11,3 +14,55 @@ form button{
 	margin-left: 2%;
 }
 
+/* REGISTRATION DETAIL PAGE */
+
+.detail-page p{
+	margin-bottom: 20px;
+	margin-left: 5%;
+}
+.registration-detail-title{
+	margin-right: 2%;
+	font-weight: 700;
+	background-color: #f5f5f5;
+	padding: 1% 2%;
+}
+
+.detail-page h3{
+	padding: 15px 10px;
+	background-color: #23527c;
+	color: #fff;
+	margin-bottom: 25px;
+}
+
+.detail-buttons{
+	margin-left: 70%;
+}
+
+.detail-buttons a{
+	margin-right: 10%;
+}
+
+.detail-row{
+	margin-left: 10%;
+}
+
+/*PARTIAL REGISTRATION DELETE PAGE*/
+.js-delete-registration-form button{
+      width: 100px;
+}
+
+/*ADMISSION PROCESS*/
+
+.accepted{
+	background-color: green;
+	color: #fff;
+}
+
+.rejected{
+	background-color: red;
+	color: #fff;
+}
+
+.admission-process{
+	margin-right: 1px;
+}

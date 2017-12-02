@@ -1,10 +1,14 @@
-{%extends "core/base.html"%}
+
 {% load i18n %} 
 
 
 {%block content%}
 
-<div class="container well login-form">
+<div class="hide" style="display: none">
+ {% include 'core/base.html' %}
+</div>
+
+<div class="container login-form" style="margin-top: 80px">
 <h2 class="form-signin-heading text-center">Se connecter</h2>
     {% if form.non_field_errors %}
       {% for error in form.non_field_errors %}

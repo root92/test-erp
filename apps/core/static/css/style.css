@@ -1,5 +1,6 @@
 body{
 	font-size: 16px;
+	background-color: #f0f5f7;
 }
 
 /* NAVBAR*/
@@ -7,10 +8,14 @@ header {
 	margin-bottom: 10%;
 }
 
+
 nav .btn-default{
-	padding-right:80%;
+	padding-right:60%;
 }
 
+.navbar .navbar-default .navbar-fixed-top {
+	background-color:  red;
+}
 .navigation{
 	padding: 1% 0 1% 0;
 }
@@ -32,15 +37,26 @@ nav .btn-default{
    margin-left: 15%;
 }
 
+.navbar-nav .open .dropdown-menu{
+	width: 500%;
+	padding-top: 10%;
+}
 
-.logged-in-user:hover, .nav-logout:hover{
+.navbar-nav .open .dropdown-menu li a{
+	color: #23527c;
 	text-decoration: none;
+	padding: 3% 20% 3% 3%;
+}
+
+.navbar-nav .open .dropdown-menu li a:hover{
+	background-color: #e3e3e3;
 }
 
 /*LOGIN PAGE*/
 
 .login-form{
 	width: 40%;
+	background-color: #ffffff;
 }
 
 .login-form button{
@@ -58,12 +74,31 @@ nav .btn-default{
 	margin: 1% 1%;
 }
 
-/*.homepage-icons ul li{
+.homepage-icons ul {
+	height: 500px;
+}
+
+.homepage-icons ul li{
 	display: inline-block;
-	width: 50px;
-	height: 40px;
-	background-color: red;
-	font-size: 100px;
+	width: 30%;
+	height: 40%;
+	background-color: white;
+	font-size: 20px;
 	padding: 10px 10px ;
-}*/
+	margin:1% 1%;
+	text-align: center;
+	padding-top: 2%;
+}
+
+.homepage-icons ul li a{
+	display: inline-block;
+	font-size: 100px;
+	width: 100%;
+	height: 100%;
+}
+
+.homepage-icons ul li p{
+	padding-top:-13%;
+	margin-top: -13%;
+}
 

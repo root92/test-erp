@@ -50,17 +50,30 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Configurations<span><b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownConfigLink">
-                        <li><a href="">Information de l'Etablissement</a></li>
-                        <li class="divider"></li>
-                        <li><a href="">Gérer les Departements</a></li>
-                        <li class="divider"></li>
-                        <li><a href="">Gérer les cours</a></li>
-                        <li class="divider"></li>
-                        <li><a href="">Gérer les classes</a></li>
-                        <li class="divider"></li>
-                        <li><a href="">Gérer les Années Academiques</a></li>
-                        <li class="divider"></li>
-                        <li><a href="">Gérer le Personnel</a></li>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                          <li><a href="">Informations sur l'Etablissement</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer les Departements</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer les cours</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer les classes</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer les Années Academiques</a></li>
+                          <li class="divider"></li>
+                        </div>
+                        <div class="col-md-5">
+                          <li><a href="">Gérer le Personnel</a></li>
+                           <li class="divider"></li>
+                          <li><a href="">Gérer les paiements</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer les evaluations</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer les années Academique</a></li>
+                          <li class="divider"></li>
+                          <li><a href="">Gérer des Utilisateurs</a></li>
+                        </div>
                     </ul>
                  </li>
               </ul>
@@ -79,9 +92,9 @@
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ user.username }}<span><b class="caret"></b></span></a>
                   <ul class="dropdown-menu aria-labelledby="navbarDropdownUserLink"">
                     <!-- <li><a href=""><span class="badge pull-right" id="unread-count">0</span> Inbox</a></li> -->
-                    <li><a href="">mon compte</a></li>
+                    <li><a href="">Mon Compte</a></li>
                     <li class="divider"></li>
-                    <li><a href="{% url 'logout' %}">se Deconnecter</a></li>
+                    <li><a href="{% url 'logout' %}">Se Deconnecter</a></li>
                   </ul>
                 </li>
               </ul>
@@ -99,3 +112,32 @@
 	{% block bottom %}{% endblock %}
 </body>
 </html>
+
+
+<!-- <div class="row">
+  <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <li><a href="">Informations sur l'Etablissement</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer les Departements</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer les cours</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer les classes</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer les Années Academiques</a></li>
+    </div>
+    <div class="col-md-5">
+      <li class="divider"></li>
+      <li><a href="">Gérer le Personnel</a></li>
+       <li class="divider"></li>
+      <li><a href="">Gérer les paiements</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer les evaluations</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer les années Academique</a></li>
+      <li class="divider"></li>
+      <li><a href="">Gérer des Utilisateurs</a></li>
+    </div>
+    <div class="col-md-1"></div>
+  </div> -->

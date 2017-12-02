@@ -5,8 +5,8 @@ from django.urls import reverse #Used to generate urls by reversing the URL patt
 
 from django_countries.fields import CountryField
 
-from apps.departement.models import Department, ClassRoom
-from apps.school.models import AcademicYear
+from apps.departement.models import Department, Course, CourseLevel
+from apps.school.models import ActiveAcademicYear
 # from .number_generations import registration_number, student_number
 
 import datetime
@@ -67,15 +67,16 @@ class Registration(models.Model):
     year_admission_bac = models.CharField(max_length=4, blank=True, null=True)
     pv = models.CharField(max_length=10, blank=True, null=True)
     registration_add_date = models.DateTimeField(auto_now_add=True)
-    registration_modify_date = models.DateTimeField(auto_now=True)
-    student_card = models.CharField(max_length=200, editable=False)
-    # department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='registrations')
+    # registration_modify_date = models.DateTimeField(auto_now=True)
+    # image = models.ImageField(upload_to='student_images', default='avatar.png')
+    # academic_year = models.ForeignKey(ActiveAcademicYear, on_delete=models.CASCADE, editable=False)
+    # course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    # course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
     
-
 
     class Meta:
         ordering = ['-pk']
-        unique_together = ('email', 'student_card')
+        unique_together = ('email', 'registry_number')
         permissions = (("can_view_content", "Can see the specified content"),)
 
     def get_absolute_url(self):
@@ -111,9 +112,6 @@ def student_number():
 #Define Admission model
 class Admission(models.Model):
     registry = models.OneToOneField(Registration, on_delete=models.CASCADE)
-    academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
-    class_level = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, related_name='admissions')
-    image = models.ImageField(upload_to='student_images', default='avatar.png')
     # fees = models.IntegerField()
     matricule = models.CharField(max_length=18, default=student_number, unique=True, editable=False)
     admission_add_date = models.DateTimeField(auto_now_add=True)

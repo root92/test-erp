@@ -32,3 +32,10 @@ class AcademicYear(models.Model):
 
     def __str__(self):
         return (self.label) 
+
+
+class ActiveAcademicYear(models.Model):
+    academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return (self.academic_year.label)

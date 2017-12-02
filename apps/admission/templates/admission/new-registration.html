@@ -32,12 +32,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
-              <!-- <img src="../../../assets/images/avatar.png" alt="..." class="img-responsive img-thumb>
-              <button class="btn btn-default" type="s>Choisir un fichier</button> -->
-            </div>
-
-            <div class="col-md-8">
+            <div class="col-md-6">
 
               <div class="">
                 {{ form.first_name.errors }}
@@ -65,7 +60,16 @@
                 {{ form.gender }}
               </div>
               </div>
-
+              <div>
+                {{ form.phone_number.errors }}
+                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Téléphone</span>
+                  {{ form.phone_number }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
               <div>
                 {{ form.address.errors }}
                 <span class="hide">{{ form.address.label_tag }}</span>
@@ -75,13 +79,31 @@
                 </div>
               </div>
               <div>
-                {{ form.phone_number.errors }}
-                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                {{ form.academic_year.errors }}
+                <span class="hide">{{ form.academic_year.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Téléphone</span>
-                  {{ form.phone_number }}
+                  <span class="input-group-addon " id="sizing-addon3">Annéé scolaire</span>
+                  {{ form.academic_year }}
                 </div>
               </div>
+
+              <div>
+                {{ form.class_level.errors }}
+                <span class="hide">{{ form.class_level.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Programme</span>
+                  {{ form.class_level }}
+                </div>
+              </div>
+              <div>
+                {{ form.image.errors }}
+                <span class="hide">{{ form.image.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Niveau</span>
+                  {{ form.image }}
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -224,7 +246,7 @@
       </div>
 
 
-       <button class="btn btn-success btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+       <button class="btn btn-primary btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
 
        <p></p>
 

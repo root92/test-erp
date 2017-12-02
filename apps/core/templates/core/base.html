@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top navigation" role="navigation">
+        <nav class="navbar navbar-default navigation" role="navigation">
           <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
@@ -34,22 +34,22 @@
                   </a>
                 </li>
                 <li><a href="{% url 'home' %}">Acceuil</a></li>
-                <li><a href="{% url 'home-admission' %}">Admission</a></li>
+                <li><a href="{% url 'registration' %}">Admission</a></li>
                 <li><a href="">Etudiants</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInscriptionLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Inscriptions<span><b class="caret"></b></span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownInscriptionLink">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownInscriptionLink" id="inscription-menu">
                         <li><a href="">Inscription Administrative</a></li>
                         <li class="divider"></li>
                     <li><a href="{% url 'logout' %}">Inscription Peagogique</a></li>
                     </ul>
-                 </li>
-                <!-- <li><a href="">Inscriptions</a></li> -->
+                </li>
+                <li><a href="{% url 'registration' %}">Tableau de Bord</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Configurations<span><b class="caret"></b></span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownConfigLink">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownConfigLink" id="config-menu">
                         <div class="col-md-1"></div>
                         <div class="col-md-6">
                           <li><a href="">Informations sur l'Etablissement</a></li>
@@ -105,6 +105,10 @@
  
 {%block content%}
 {%endblock%}
+
+  <footer class="container-fluid footer-copyright">
+    © 2017 Copyright:Université
+  </footer>
 
 	<script src="{% static 'js/jquery.min.js'%}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>

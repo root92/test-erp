@@ -1,21 +1,18 @@
 body{
-	font-size: 16px;
-	background-color: #f0f5f7;
+	/*font-size: 16px;*/
+	/*background-color: #f0f5f7;*/
 }
 
 /* NAVBAR*/
-header {
-	margin-bottom: 10%;
-}
 
+/*.navbar-default{
+	background-color: #074f67;
+}*/
 
 nav .btn-default{
-	padding-right:60%;
+	padding-right:40%;
 }
 
-.navbar .navbar-default .navbar-fixed-top {
-	background-color:  red;
-}
 .navigation{
 	padding: 1% 0 1% 0;
 }
@@ -25,7 +22,8 @@ nav .btn-default{
 
 .navbar-default .main-nav>li>a {
     color: #23527c;
-    font-size: 15px;
+    /*color: #ffffff*/
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -37,9 +35,14 @@ nav .btn-default{
    margin-left: 15%;
 }
 
-.navbar-nav .open .dropdown-menu{
+#config-menu {
 	width: 500%;
-	padding-top: 10%;
+	padding-top: 5px;
+}
+
+#inscription-menu{
+	width: 150%;
+	padding-top: 5px;
 }
 
 .navbar-nav .open .dropdown-menu li a{
@@ -67,11 +70,6 @@ nav .btn-default{
 .homepage-icons h3{
 	text-align: center;
 	color: #23527c;
-}
-.homepage-icons img{
-	width: 30%;
-	height: 30%;
-	margin: 1% 1%;
 }
 
 .homepage-icons ul {
@@ -102,3 +100,23 @@ nav .btn-default{
 	margin-top: -13%;
 }
 
+/*REGISTRATION*/
+/*.panel-primary > .panel-heading{
+	background-color: #143548;
+}*/
+
+/*FOOTER*/
+.footer-copyright{
+	position: relative;
+	top : 600px;
+	padding: 0.5% 0.5%;
+	font-size: 12px;
+	text-align: center;
+	background-color: #e3e3e3;
+
+}
+
+.registration-page{
+	padding: 2% 2%;
+	margin-top: -3%;
+}

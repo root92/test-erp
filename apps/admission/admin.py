@@ -5,7 +5,7 @@ from .models import Registration, Admission, AdmissionProcess
 @admin.register(Registration)
 class RegistrationAdmin(admin.ModelAdmin):
 
-    list_display = ('registry_number', 'first_name', 'last_name', 'id_card_number', 'registration_add_date')
+    list_display = ('registry_number', 'first_name', 'last_name', 'registration_add_date')
     list_filter = ('registry_number','registration_add_date', )
     date_hierarchy = 'registration_add_date'
     ordering = ('registration_add_date', )
@@ -33,7 +33,7 @@ class RegistrationAdmin(admin.ModelAdmin):
 @admin.register(Admission)
 class AdmissionAdmin(admin.ModelAdmin):
 
-    list_display = ('matricule', 'registry', 'academic_year', 'class_level', 'admission_add_date')
+    list_display = ('matricule', 'registry', 'admission_add_date')
     list_filter = ('matricule','registry', 'admission_add_date' )
     date_hierarchy = 'admission_add_date'
     ordering = ('admission_add_date', )

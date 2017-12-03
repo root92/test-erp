@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 DB_NAME = os.environ.get('PG_NAME', 'postgres')
 DB_USERNAME = os.environ.get('PG_USERNAME', 'postgres')
-DB_PASSWORD = os.environ.get('PG_PASSWORD', None)
+DB_PASSWORD = os.environ.get('PG_PASSWORD', 'gnerp123')
 DB_HOST = os.environ.get('PG_HOST', 'db')
 DB_PORT = os.environ.get('PG_PORT', 5432)
 
@@ -153,3 +153,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+
+print (DB_PASSWORD)

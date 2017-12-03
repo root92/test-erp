@@ -72,7 +72,7 @@ class Registration(models.Model):
     active_year = models.CharField(max_length=32)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
-    student_card=models.CharField(max_length=30, editable=False, blank=True, null=True)
+    # student_card=models.CharField(max_length=30, editable=False, blank=True, null=True)
     
 
     class Meta:

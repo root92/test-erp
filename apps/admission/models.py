@@ -67,11 +67,12 @@ class Registration(models.Model):
     year_admission_bac = models.CharField(max_length=4, blank=True, null=True)
     pv = models.CharField(max_length=10, blank=True, null=True)
     registration_add_date = models.DateTimeField(auto_now_add=True)
-    # registration_modify_date = models.DateTimeField(auto_now=True)
-    # image = models.ImageField(upload_to='student_images', default='avatar.png')
-    # academic_year = models.ForeignKey(ActiveAcademicYear, on_delete=models.CASCADE, editable=False)
-    # course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    # course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
+    registration_modify_date = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='student_images', default='avatar.png')
+    active_year = models.CharField(max_length=32)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
+    student_card=models.CharField(max_length=30, editable=False, blank=True, null=True)
     
 
     class Meta:

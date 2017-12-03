@@ -45,7 +45,6 @@
                     <li><a href="{% url 'logout' %}">Inscription Peagogique</a></li>
                     </ul>
                 </li>
-                <li><a href="{% url 'registration' %}">Tableau de Bord</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Configurations<span><b class="caret"></b></span>
                     </a>
@@ -112,7 +111,7 @@
 
 	<script src="{% static 'js/jquery.min.js'%}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'js/sweetalert.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
 	{% block bottom %}{% endblock %}
 </body>
 </html>

@@ -18,6 +18,11 @@ class RegistrationAdmin(admin.ModelAdmin):
             'description':u'Information personnel',
             'fields': ('first_name', 'last_name', 'gender', 'date_of_birth', 'nationality', 'address', 'phone_number', 'email', 'id_card_number')
         }),
+
+        ("Information sur l'admission", {
+            'description':u'Information liées à Admission',
+            'fields': ('active_year', 'course', 'course_level', 'image')
+        }),
         # Fieldset 2 : parti concernant la famille
         ('Information sur la famille ou le tuteur', {
             'description':u'Information sur la famille ou le tuteur',

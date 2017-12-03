@@ -55,6 +55,11 @@ nav .btn-default{
 	background-color: #e3e3e3;
 }
 
+/*DROPDOWN MENU ON HOVER*/
+/*.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+*/
 /*LOGIN PAGE*/
 
 .login-form{

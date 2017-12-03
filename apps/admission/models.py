@@ -57,7 +57,7 @@ class Registration(models.Model):
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(max_length=100, blank=True, null=True)
-    id_card_number = models.CharField(max_length=50)
+    id_card_number = models.CharField(max_length=50, blank=True, null=True)
     guardian_name = models.CharField(max_length=100, blank=True, null=True)
     guardian_phone = models.CharField(max_length=20, blank=True, null=True)
     guardian_email = models.EmailField(max_length=100, blank=True, null=True)

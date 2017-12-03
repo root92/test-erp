@@ -50,14 +50,14 @@ def edit_registration(request, registration_id):
     registration = Registration.objects.get(id=registration_id)
 
     if request.POST:
-        form = RegistrationForm(request.POST, instance=registration)
+        form = RegistrationForm(data=request.POST, files=request.FILES, instance=registration)
         if form.is_valid():
             form.save()
             return redirect('registration')
     else:
         form = RegistrationForm(instance=registration)
 
-    return render(request, 'admission/edit-registration.html', {'form': form})
+    return render(request, 'admission/edit-registration.html', {'form': form, 'registration': registration})
 
 
 @login_required

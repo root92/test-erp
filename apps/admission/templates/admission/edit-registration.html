@@ -1,5 +1,9 @@
-{% include 'core/base.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -15,16 +19,11 @@
           <li class="active">Edit {{ registration.registry_number}}</li>
         </ol>
       </div>
-      <form action="{% url 'edit-registration' form.instance.id %}" method="post" role="form">
+      <form enctype="multipart/form-data" action="{% url 'edit-registration' form.instance.id %}" method="post" role="form">
         {% csrf_token %}
-        <div class="panel panel-default">
+      <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
-              <!-- <img src="../../../assets/images/avatar.png" alt="..." class="img-responsive img-thumb>
-              <button class="btn btn-default" type="s>Choisir un fichier</button> -->
-            </div>
-
             <div class="col-md-8">
 
               <div class="">
@@ -34,7 +33,6 @@
                 <span class="input-group-addon " id="sizing-addon3">Prenom</span>
                 {{ form.first_name}}
                 </div>
-                {{forms.erros}}
               </div>
 
               <div>
@@ -54,23 +52,45 @@
                 {{ form.gender }}
               </div>
               </div>
+              <div>
+                {{ form.active_year.errors }}
+                <span class="hide">{{ form.active_year.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Annéé scolaire</span>
+                  {{ form.active_year }}
+                </div>
+              </div>
 
               <div>
-                {{ form.address.errors }}
-                <span class="hide">{{ form.address.label_tag }}</span>
+                {{ form.course.errors }}
+                <span class="hide">{{ form.course.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                <span class="input-group-addon " id="sizing-addon3">Adresse</span>
-                  {{ form.address }}
+                <span class="input-group-addon " id="sizing-addon3">Programme</span>
+                  {{ form.course }}
                 </div>
               </div>
               <div>
-                {{ form.phone_number.errors }}
-                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                {{ form.course_level.errors }}
+                <span class="hide">{{ form.course_level.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Téléphone</span>
-                  {{ form.phone_number }}
+                <span class="input-group-addon " id="sizing-addon3">Niveau</span>
+                  {{ form.course_level }}
                 </div>
               </div>
+            </div>
+            <div class="col-md-4">
+
+             <img src="{{ registration.image.url }}" alt="Student registration image " height="200" width="200" class="edit-image">
+              <!-- <div>
+                {{ form.image.errors }}
+                <span id="image-upload-button">{{ form.image.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  {{ form.image }}
+                </div>
+              </div>
+              <div class="preview">
+                <p> Aucune Image selectionnée</p>
+              </div> -->
             </div>
           </div>
         </div>
@@ -80,6 +100,22 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-6">
+              <div>
+                {{ form.phone_number.errors }}
+                <span class="hide">{{ form.phone_number.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Téléphone</span>
+                  {{ form.phone_number }}
+                </div>
+              </div>
+              <div>
+                {{ form.address.errors }}
+                <span class="hide">{{ form.address.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <span class="input-group-addon " id="sizing-addon3">Adresse</span>
+                  {{ form.address }}
+                </div>
+              </div>
 
               <div>
                 {{ form.date_of_birth.errors }}
@@ -87,15 +123,6 @@
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
                   <span class="input-group-addon " id="sizing-addon3">Date de naissance</span>
                   {{form.date_of_birth}}
-                </div>
-              </div>
-
-              <div>
-                {{ form.nationality.errors }}
-                <span class="hide">{{ form.nationality.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Nationalité</span>
-                  {{ form.nationality }}
                 </div>
               </div>
 
@@ -119,6 +146,14 @@
                
             </div>
             <div class="col-md-6">
+               <div>
+                {{ form.nationality.errors }}
+                <span class="hide">{{ form.nationality.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Nationalité</span>
+                  {{ form.nationality }}
+                </div>
+              </div>
               
               <div>
                 {{ form.school_origin.errors}}
@@ -212,7 +247,8 @@
       </div>
 
 
-       <button class="btn btn-success btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+
+       <button class="btn btn-primary btn-sm" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
 
        <p></p>
 

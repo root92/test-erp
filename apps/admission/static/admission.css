@@ -1,6 +1,5 @@
 
 
-
 /* REGISTRATION FORM*/
  .hide{
 	display: none;
@@ -59,6 +58,20 @@ form p {
 	padding-bottom: 2%;
 }
 
+/*Registration detail page*/
+.registration-detail-image{
+	margin-left: 60px;
+	margin-top: -5px;
+}
+
+.edit-image{
+	margin-top: 10px;
+}
+
+.pers-info, .additionnal-detail-info{
+   text-align: center;
+}
+
 form button{
 	width: 10%;
 	margin-left: 2%;
@@ -83,7 +96,7 @@ form button{
 	padding: 15px 10px;
 	background-color: #23527c;
 	color: #fff;
-	margin-bottom: 25px;
+	margin: -12px 0 25px 0;
 }
 
 .detail-buttons{
@@ -94,9 +107,9 @@ form button{
 	margin-right: 10%;
 }
 
-.detail-row{
+./*detail-row{
 	margin-left: 10%;
-}
+*/}
 
 /*PARTIAL REGISTRATION DELETE PAGE*/
 .js-delete-registration-form button{

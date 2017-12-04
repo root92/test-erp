@@ -24,7 +24,12 @@ def registration(request):
 # implementing Registration form
 @login_required
 def new_registration(request):
-    active_year = ActiveAcademicYear.objects.get(id=1)
+    try:
+       active_year = ActiveAcademicYear.objects.last()
+    except ActiveAcademicYear.DoestNotExists:
+        active_year = None
+
+
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:

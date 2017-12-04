@@ -7,4 +7,7 @@ django-countries==4.6.1
 django-extensions==1.9.0
 olefile==0.44
 Pillow==4.3.0
+gunicorn==19.6.0
+wheel==0.24.0
+whitenoise==3.2.2
 

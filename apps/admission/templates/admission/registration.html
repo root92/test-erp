@@ -1,11 +1,13 @@
-{% include 'core/base.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
 
 {% block content %}
 
-{% if registrations %}
-
-<div class="row container">
+<div class="row container registration-page">
      {% include 'admission/aside.html' %}
 
     <div class="col-md-10">
@@ -40,7 +42,7 @@
         </div>
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading">Registration List
+            <div class="panel-heading">Liste des personnes saisies
             </div>
             <div class="panel-body">
             <p>...</p>
@@ -56,7 +58,7 @@
                 <th>Numero de saisie</th>
                 <th>Prenom</th>
                 <th>Nom</th>
-                <!-- <th>Menu</th> -->
+                <th>Statut</th>
              </tr>
             </thead>
             <tbody>
@@ -64,9 +66,27 @@
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
                 <td>{{registration.registration_add_date|date:"DATE_FORMAT" }}</td>
-                <td><a href="{{ registration.get_absolute_url }}" class="">{{registration.registry_number}}</a></td>
+                <td class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true" id="registrationMenu">{{registration.registry_number}}
+                    </a>
+                        <ul class="dropdown-menu registration-menu" aria-labelledby="registrationMenu" id="regist-menu">
+                            <li>
+                                <a href="{{ registration.get_absolute_url }}" class="">
+                                    Plus d'infos sur {{registration.first_name}} {{registration.last_name}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="">
+                                    Processus d'admission
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    
+                </td>
                 <td>{{registration.first_name}}</td>
                 <td>{{registration.last_name}}</td>
+                <td>A definir</td>
 
             </tr>
             {% endfor %}
@@ -79,59 +99,8 @@
         
         </div>
         
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridSystemModalLabel">Add class level</h4>
-                </div>
-                <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-4">
-                    <div class="alert alert-info" role="alert">
-                        Add class level <br/> Add class level <br/> Add class level <br/>
-                    </div>
-                    </div>
-                    <div class="col-md-8">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-addon" id="sizing-addon3">Batch Name</span>
-                        <input type="text" class="form-control" placeholder="Code Class level" name="name" [(ngModel)]="name" aria-describedby="sizing-addon3">
-                    </div>
-        
-                    <div class="input-group input-group-sm" style="padding-top: 10px">
-                        <span class="input-group-addon" id="sizing-addon3">Start date</span>
-                        <input type="text" class="form-control" placeholder="Class level" name="start_date" [(ngModel)]="start_date" aria-describedby="sizing-addon3">
-                    </div>
-        
-                    <div class="input-group input-group-sm" style="padding-top: 10px">
-                        <span class="input-group-addon" id="sizing-addon3">End date</span>
-                        <input type="text" class="form-control" placeholder="Class level" name="end_date" [(ngModel)]="end_date" aria-describedby="sizing-addon3">
-                    </div>
-        
-                    <div class="input-group input-group-sm" style="padding-top: 10px">
-                        <span class="input-group-addon" id="sizing-addon3" name="department">Departement</span>
-                        <select class="form-control">
-                        <option>----</option>
-                        <!-- <option *ngFor="let item of departments">{{item.name}}</option>  -->
-                        </select>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="onCreate()">Create</button> -->
-                </div>
-            </div>
-            </div>
-        </div>
+    
     </div>
 </div>
-
-{% else %}
-<h3>No registration yet</h3>
-{% endif %}
 
 {% endblock %}

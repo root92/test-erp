@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Department, Course, ClassRoom
+from .models import Department, Course, ClassRoom, CourseLevel
 
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
 
-    list_display = ('title', 'department', 'level')
+    list_display = ('name', 'department', )
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
@@ -19,6 +19,6 @@ class ClassRoomAdmin(admin.ModelAdmin):
 
 
 # admin.site.register(Department)
-# admin.site.register(ClassRoom)
+admin.site.register(CourseLevel)
 
 

@@ -1,23 +1,75 @@
+body{
+	/*font-size: 16px;*/
+	/*background-color: #f0f5f7;*/
+}
+
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
+}
 
 /* NAVBAR*/
 
+/*.navbar-default{
+	background-color: #074f67;
+}*/
+
+nav .btn-default{
+	padding-right:40%;
+}
+
+.navigation{
+	padding: 1% 0 1% 0;
+}
 .navbar-default .navbar-brand {
-	margin-right: 15%;
 	color: #23527c;
 }
 
-.logged-in-user{
-	padding-right: 1%;
+.navbar-default .main-nav>li>a {
+    color: #23527c;
+    /*color: #ffffff*/
+    font-size: 16px;
+    font-weight: 400;
 }
 
-.logged-in-user:hover, .nav-logout:hover{
+.navbar-default .navbar-right>li>a{
+	color: #23527c;
+}
+
+.navbar-form{
+   margin-left: 15%;
+}
+
+#config-menu {
+	width: 500%;
+	padding-top: 5px;
+}
+
+#inscription-menu{
+	width: 150%;
+	padding-top: 5px;
+}
+
+.navbar-nav .open .dropdown-menu li a{
+	color: #23527c;
 	text-decoration: none;
+	padding: 3% 20% 3% 3%;
 }
 
+.navbar-nav .open .dropdown-menu li a:hover{
+	background-color: #e3e3e3;
+}
+
+/*DROPDOWN MENU ON HOVER*/
+/*.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+*/
 /*LOGIN PAGE*/
 
 .login-form{
 	width: 40%;
+	background-color: #ffffff;
 }
 
 .login-form button{
@@ -29,9 +81,52 @@
 	text-align: center;
 	color: #23527c;
 }
-.homepage-icons img{
-	width: 30%;
-	height: 30%;
-	margin: 1% 1%;
+
+.homepage-icons ul {
+	height: 500px;
 }
 
+.homepage-icons ul li{
+	display: inline-block;
+	width: 30%;
+	height: 40%;
+	background-color: white;
+	font-size: 20px;
+	padding: 10px 10px ;
+	margin:1% 1%;
+	text-align: center;
+	padding-top: 2%;
+}
+
+.homepage-icons ul li a{
+	display: inline-block;
+	font-size: 100px;
+	width: 100%;
+	height: 100%;
+}
+
+.homepage-icons ul li p{
+	padding-top:-13%;
+	margin-top: -13%;
+}
+
+/*REGISTRATION*/
+/*.panel-primary > .panel-heading{
+	background-color: #143548;
+}*/
+
+/*FOOTER*/
+.footer-copyright{
+	position: relative;
+	top : 600px;
+	padding: 0.5% 0.5%;
+	font-size: 12px;
+	text-align: center;
+	background-color: #e3e3e3;
+
+}
+
+.registration-page{
+	padding: 2% 2%;
+	margin-top: -3%;
+}

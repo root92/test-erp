@@ -4,8 +4,7 @@
 
 {%block content%}
 
-<div class="container homepage-icons well"> 
-  <h3>Welcome to gn-erp university management system</h3>
+<!-- <div class="container homepage-icons well"> 
   <a href="{% url 'home-admission' %}">
     <img src="{% static 'images/admissions.png' %}" alt="..." class="img-rounded">
   </a>
@@ -24,6 +23,46 @@
   <a href="">
     <img src="{% static 'images/settings.png' %}" alt="..." class="img-rounded">
   </a>
+</div> -->
+<div class="container homepage-icons">
+  <ul>
+      <li>
+      <a href="{% url 'registration' %}">
+        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+      </a>
+      <p>Admission</p>
+      </li>
+      <li>
+      <a href="{% url 'home-admission' %}"> 
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+      </a>
+      <p>Etudiants</p>
+      </li>
+      <li>
+      <a href="{% url 'home-admission' %}">
+        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      </a>
+      <p>Calendrier</p>
+    </li>
+     <li>
+      <a href="{% url 'home-admission' %}">
+        <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+      </a>
+      <p>Paiements</p>
+    </li>
+     <li>
+      <a href="{% url 'home-admission' %}">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+      </a>
+      <p>Inscriptions</p>
+    </li>
+     <li>
+      <a href="{% url 'home-admission' %}">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </a>
+      <p>Configuration</p>
+    </li>
+  </ul>
 </div>
 
 {% endblock %}

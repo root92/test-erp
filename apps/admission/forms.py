@@ -25,10 +25,11 @@ class RegistrationForm(forms.ModelForm):
             'school_origin': "Ecole d'origine",
             'option': 'options',
             'year_admission_bac': "Année d'admission Baccalauréat",
-            'pv': 'Pv'
+            'pv': 'Pv',
+            'image': 'Choisir une image'
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control form-element', }),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', }),
             'last_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
             'gender': forms.Select(attrs={'class': 'form-control form-element'}),
             'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017'}),
@@ -46,9 +47,14 @@ class RegistrationForm(forms.ModelForm):
             'school_origin': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'option': forms.Select(attrs={'class': 'form-control form-element'}),
             'year_admission_bac': forms.TextInput(attrs={'class': 'form-control form-element'}),
-            'pv': forms.TextInput(attrs={'class': 'form-control form-element'})
+            'pv': forms.TextInput(attrs={'class': 'form-control form-element'}),
+            'image': forms.FileInput(attrs={"accept":".jpg, .jpeg, .png"}),
+            'active_year': forms.TextInput(attrs={'class': 'form-control form-element', 'readonly':'readonly'}),
+            'course': forms.Select(attrs={'class': 'form-control form-element'}),
+            'course_level': forms.Select(attrs={'class': 'form-control form-element'}),
         }
-        
+  
+     
 
 class AdmissionProcessForm(forms.ModelForm):
     class Meta:

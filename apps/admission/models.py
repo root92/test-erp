@@ -5,8 +5,8 @@ from django.urls import reverse #Used to generate urls by reversing the URL patt
 
 from django_countries.fields import CountryField
 
-from apps.departement.models import Department, ClassRoom
-from apps.school.models import AcademicYear
+from apps.departement.models import Department, Course, CourseLevel
+from apps.school.models import ActiveAcademicYear
 # from .number_generations import registration_number, student_number
 
 import datetime
@@ -57,7 +57,7 @@ class Registration(models.Model):
     address = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField(max_length=100, blank=True, null=True)
-    id_card_number = models.CharField(max_length=50)
+    id_card_number = models.CharField(max_length=50, blank=True, null=True)
     guardian_name = models.CharField(max_length=100, blank=True, null=True)
     guardian_phone = models.CharField(max_length=20, blank=True, null=True)
     guardian_email = models.EmailField(max_length=100, blank=True, null=True)
@@ -68,14 +68,16 @@ class Registration(models.Model):
     pv = models.CharField(max_length=10, blank=True, null=True)
     registration_add_date = models.DateTimeField(auto_now_add=True)
     registration_modify_date = models.DateTimeField(auto_now=True)
-    student_card = models.CharField(max_length=200, editable=False)
-    # department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='registrations')
+    image = models.ImageField(upload_to='student_images', default='avatar.png', blank=True, null=True)
+    active_year = models.CharField(max_length=32)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
+    # student_card=models.CharField(max_length=30, editable=False, blank=True, null=True)
     
 
-
     class Meta:
-        ordering = ['-pk']
-        unique_together = ('email', 'student_card')
+        ordering = ['pk']
+        unique_together = ('email', 'registry_number')
         permissions = (("can_view_content", "Can see the specified content"),)
 
     def get_absolute_url(self):
@@ -111,9 +113,6 @@ def student_number():
 #Define Admission model
 class Admission(models.Model):
     registry = models.OneToOneField(Registration, on_delete=models.CASCADE)
-    academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
-    class_level = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, related_name='admissions')
-    image = models.ImageField(upload_to='student_images', default='avatar.png')
     # fees = models.IntegerField()
     matricule = models.CharField(max_length=18, default=student_number, unique=True, editable=False)
     admission_add_date = models.DateTimeField(auto_now_add=True)

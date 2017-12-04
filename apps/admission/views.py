@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
+from apps.school.models import ActiveAcademicYear
 from .models import Registration, Admission, AdmissionProcess
 from .forms import RegistrationForm, AdmissionForm, AdmissionProcessForm
 
@@ -23,16 +24,17 @@ def registration(request):
 # implementing Registration form
 @login_required
 def new_registration(request):
+    active_year = ActiveAcademicYear.objects.get(id=1)
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(data=request.POST, files=request.FILES)
         # check whether it's valid:
         if form.is_valid():
             form.save(commit=True)
             return redirect('registration')
     else:
-        form = RegistrationForm()
+        form = RegistrationForm(initial={'active_year': active_year})
 
     return render(request, 'admission/new-registration.html', {'form': form})
 
@@ -48,14 +50,14 @@ def edit_registration(request, registration_id):
     registration = Registration.objects.get(id=registration_id)
 
     if request.POST:
-        form = RegistrationForm(request.POST, instance=registration)
+        form = RegistrationForm(data=request.POST, files=request.FILES, instance=registration)
         if form.is_valid():
             form.save()
             return redirect('registration')
     else:
         form = RegistrationForm(instance=registration)
 
-    return render(request, 'admission/edit-registration.html', {'form': form})
+    return render(request, 'admission/edit-registration.html', {'form': form, 'registration': registration})
 
 
 @login_required

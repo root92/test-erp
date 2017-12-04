@@ -1,18 +1,98 @@
 
+
+/*	REGISTRATION PAGE*/
+#regist-menu{
+	position: absolute;
+	top: 0;
+	left: 60%;
+	padding: 2%;
+}
+
+#regist-menu li a{
+    margin-bottom: 2px;
+    color: blue;
+    padding: 4px 4px;
+}
+
+
 /* REGISTRATION FORM*/
  .hide{
 	display: none;
 }
 
+/*IMAGE UPLOAD*/
 
+form ol {
+  padding-left: 0;
+  margin-top: -10px;
+}
+
+form li, div > p {
+  display: block;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0 auto;
+}
+
+form img {
+  height: 150px;
+  order: 1;
+  margin: -10px 0 1% 20%;
+
+}
+
+form p {
+  line-height: 16px;
+  padding-left: 5px;
+  font-size: 13px;
+  text-align: center;
+}
+
+#image-upload-button label{
+	margin-top: 10px;
+	margin-left: 20%;
+	width: 60%;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	height: 30px;
+	padding-top: 5px;
+	text-align: center;
+	background-color: #eee;
+}
+
+#image-upload-button:hover {
+  color: #23527c;
+}
+
+#image-upload-button:active{
+  color: #23527c;
+}
+
+/* FILE UPLOAD STYLE ENDS*/
 .registration-form{
 	padding-bottom: 2%;
+}
+
+/*Registration detail page*/
+.registration-detail-image{
+	margin-left: 60px;
+	margin-top: -5px;
+}
+
+.edit-image{
+	margin-top: 10px;
+}
+
+.pers-info, .additionnal-detail-info{
+   text-align: center;
 }
 
 form button{
 	width: 10%;
 	margin-left: 2%;
 }
+
+
 
 /* REGISTRATION DETAIL PAGE */
 
@@ -31,7 +111,7 @@ form button{
 	padding: 15px 10px;
 	background-color: #23527c;
 	color: #fff;
-	margin-bottom: 25px;
+	margin: -12px 0 25px 0;
 }
 
 .detail-buttons{
@@ -42,9 +122,9 @@ form button{
 	margin-right: 10%;
 }
 
-.detail-row{
+./*detail-row{
 	margin-left: 10%;
-}
+*/}
 
 /*PARTIAL REGISTRATION DELETE PAGE*/
 .js-delete-registration-form button{
@@ -66,3 +146,6 @@ form button{
 .admission-process{
 	margin-right: 1px;
 }
+
+
+/*BUTTON*/

@@ -26,9 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3i3u2293200320399283837732r5tggg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
+#Set hosts to allow any app on Heroku and the local testing URL
+ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
+
 
 
 # Application definition
@@ -145,6 +147,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'home'
@@ -160,3 +163,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+print(BASE_DIR)

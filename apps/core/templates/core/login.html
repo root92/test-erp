@@ -8,7 +8,13 @@
  {% include 'core/base.html' %}
 </div>
 
-<div class="container login-form" style="margin-top: 80px">
+<style>
+.login-form{
+  background-color: #e3e3e3;
+}
+</style>
+
+<div class="container well login-form" style="margin-top: 80px">
 <h2 class="form-signin-heading text-center">Se connecter</h2>
     {% if form.non_field_errors %}
       {% for error in form.non_field_errors %}

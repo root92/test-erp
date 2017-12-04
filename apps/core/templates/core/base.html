@@ -9,7 +9,9 @@
 	<meta name="description" content="Universtity management system that allows organizations manage efficiently courses, students, teachers etc..">
 	<link rel="stylesheet"  href="{% static 'css/bootstrap.min.css'%}"> 
 	<link rel="stylesheet"  href="{% static 'css/sweetalert.css'%}"> 
-	<link rel="stylesheet"  href="{% static 'css/style.css'%}">
+	<link rel="stylesheet"  href="{% static 'css/animate.min.css'%}">
+  <link rel="stylesheet"  href="{% static 'css/bootstrap-dropdownhover.min.css'%}">
+  <link rel="stylesheet"  href="{% static 'css/style.css'%}">
 	{% block head %}{% endblock %}
 
 </head>
@@ -37,7 +39,7 @@
                 <li><a href="{% url 'registration' %}">Admission</a></li>
                 <li><a href="">Etudiants</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInscriptionLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Inscriptions<span><b class="caret"></b></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInscriptionLink" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="true">Inscriptions<span><b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownInscriptionLink" id="inscription-menu">
                         <li><a href="">Inscription Administrative</a></li>
@@ -111,6 +113,7 @@
 
 	<script src="{% static 'js/jquery.min.js'%}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-dropdownhover.min.js' %}"></script>
   <script src="{% static 'js/app.js' %}"></script>
 	{% block bottom %}{% endblock %}
 </body>

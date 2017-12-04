@@ -1,5 +1,9 @@
-{% include 'core/base.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -54,7 +58,7 @@
                 <th>Numero de saisie</th>
                 <th>Prenom</th>
                 <th>Nom</th>
-                <!-- <th>Menu</th> -->
+                <th>Statut</th>
              </tr>
             </thead>
             <tbody>
@@ -62,9 +66,27 @@
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
                 <td>{{registration.registration_add_date|date:"DATE_FORMAT" }}</td>
-                <td><a href="{{ registration.get_absolute_url }}" class="">{{registration.registry_number}}</a></td>
+                <td class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true" id="registrationMenu">{{registration.registry_number}}
+                    </a>
+                        <ul class="dropdown-menu registration-menu" aria-labelledby="registrationMenu" id="regist-menu">
+                            <li>
+                                <a href="{{ registration.get_absolute_url }}" class="">
+                                    Plus d'infos sur {{registration.first_name}} {{registration.last_name}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="">
+                                    Processus d'admission
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    
+                </td>
                 <td>{{registration.first_name}}</td>
                 <td>{{registration.last_name}}</td>
+                <td>A definir</td>
 
             </tr>
             {% endfor %}

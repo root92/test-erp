@@ -3,6 +3,11 @@ body{
 	/*background-color: #f0f5f7;*/
 }
 
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
+}
+
 /* NAVBAR*/
 
 /*.navbar-default{

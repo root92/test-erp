@@ -1,5 +1,20 @@
 
 
+/*	REGISTRATION PAGE*/
+#regist-menu{
+	position: absolute;
+	top: 0;
+	left: 60%;
+	padding: 2%;
+}
+
+#regist-menu li a{
+    margin-bottom: 2px;
+    color: blue;
+    padding: 4px 4px;
+}
+
+
 /* REGISTRATION FORM*/
  .hide{
 	display: none;

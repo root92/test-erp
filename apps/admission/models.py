@@ -68,7 +68,7 @@ class Registration(models.Model):
     pv = models.CharField(max_length=10, blank=True, null=True)
     registration_add_date = models.DateTimeField(auto_now_add=True)
     registration_modify_date = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='student_images', default='avatar.png')
+    image = models.ImageField(upload_to='student_images', default='avatar.png', blank=True, null=True)
     active_year = models.CharField(max_length=32)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
@@ -76,7 +76,7 @@ class Registration(models.Model):
     
 
     class Meta:
-        ordering = ['-pk']
+        ordering = ['pk']
         unique_together = ('email', 'registry_number')
         permissions = (("can_view_content", "Can see the specified content"),)
 

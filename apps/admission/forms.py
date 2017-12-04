@@ -29,7 +29,7 @@ class RegistrationForm(forms.ModelForm):
             'image': 'Choisir une image'
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control form-element', }),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', }),
             'last_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
             'gender': forms.Select(attrs={'class': 'form-control form-element'}),
             'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017'}),

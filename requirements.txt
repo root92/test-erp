@@ -10,4 +10,4 @@ Pillow==4.3.0
 gunicorn==19.6.0
 wheel==0.24.0
 whitenoise==3.2.2
-
+django-role-permissions==2.2.0

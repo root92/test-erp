@@ -14,7 +14,7 @@
     <div class="page-header">
         <ol class="breadcrumb">
           <li><a href="#">Admission</a></li>
-          <li><a href="#">Liste des saisie</a></li>
+          <li><a href="{% url 'registration' %}">Liste des saisie</a></li>
           <li class="active">Nouvelle saisie</li>
         </ol>
     </div>
@@ -39,11 +39,14 @@
                 <span class="hide">{{ form.first_name.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
                 <span class="input-group-addon " id="sizing-addon3">Prenom</span>
-                {{ form.first_name}}
+                  {{ form.first_name}}
                 </div>
                   {% for error in form.first_name.errors %}
-                  <label class="control-label">{{ error }}</label>
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
                   {% endfor %}
+                  <!-- {{ form.first_name.errors}} -->
               </div>
 
               <div>
@@ -52,16 +55,27 @@
                   <span class="input-group-addon " id="sizing-addon3">Nom</span>
                   {{form.last_name}}
                 </div>
-                {{ form.last_name.errors }}
+                  {% for error in form.last_name.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                  <!-- {{ form.last_name.errors }} -->
               </div>
 
               <div>
                 <span class="hide">{{ form.gender.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <div class="" style="padding-top: 10px;" >
                   <span class="input-group-addon " id="sizing-addon3">Genre</span>
                   {{ form.gender }}
                 </div>
-                {{ form.gender.errors }}
+                  {% for error in form.gender.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                  <!-- {{ form.gender.errors }} -->
+
               </div>
               <div>
                 <span class="hide">{{ form.active_year.label_tag }}</span>
@@ -69,7 +83,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Annéé scolaire</span>
                   {{ form.active_year }}
                 </div>
-                  {{ form.active_year.errors }}
+                  {% for error in form.active_year.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                  <!-- {{ form.active_year.errors }} -->
               </div>
 
               <div>
@@ -78,7 +97,12 @@
                 <span class="input-group-addon " id="sizing-addon3">Programme</span>
                   {{ form.course }}
                 </div>
-                {{ form.course.errors }}
+                  {% for error in form.course.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                  <!-- {{ form.course.errors }} -->
               </div>
               <div>
                 <span class="hide">{{ form.course_level.label_tag }}</span>
@@ -86,7 +110,12 @@
                 <span class="input-group-addon " id="sizing-addon3">Niveau</span>
                   {{ form.course_level }}
                 </div>
-                 {{ form.course_level.errors }}
+                  {% for error in form.course_level.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                  <!-- {{ form.course_level.errors }} -->
               </div>
             </div>
             <div class="col-md-4">
@@ -96,7 +125,12 @@
                 <!-- <span class="input-group-addon" id="image-upload-button">Choisir une image</span> -->
                   {{ form.image }}
                 </div>
-                {{ form.image.errors }}
+                  {% for error in form.image.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                  <!-- {{ form.image.errors }} -->
               </div>
               <div class="preview">
                 <p> Aucune Image selectionnée</p>
@@ -116,7 +150,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Téléphone</span>
                   {{ form.phone_number }}
                 </div>
-                  {{ form.phone_number.errors }}
+                  {% for error in form.phone_number.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.phone_number.errors }} -->
               </div>
               <div>
                 <span class="hide">{{ form.address.label_tag }}</span>
@@ -124,7 +163,12 @@
                 <span class="input-group-addon " id="sizing-addon3">Adresse</span>
                   {{ form.address }}
                 </div>
-                {{ form.address.errors }}
+                {% for error in form.address.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger">{{error}}</div>
+                   </div>
+                  {% endfor %}
+                <!-- {{ form.address.errors }} -->
               </div>
 
               <div>
@@ -133,7 +177,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Date de naissance</span>
                   {{form.date_of_birth}}
                 </div>
-                {{ form.date_of_birth.errors }}
+                 {% for error in form.date_of_birth.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.date_of_birth.errors }} -->
               </div>
 
               <div>
@@ -142,7 +191,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Numero Carte d'identité</span>
                   {{form.id_card_number }}
                 </div>
-                 {{ form.id_card_number.errors }}
+                  {% for error in form.id_card_number.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                 <!-- {{ form.id_card_number.errors }} -->
               </div>
               <div>
                <span class="hide"> {{ form.email.label_tag }}</span>
@@ -150,7 +204,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Email</span>
                   {{ form.email }}
                 </div>
-                  {{ form.email.errors }}
+                  {% for error in form.email.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.email.errors }} -->
               </div>
               
                
@@ -162,7 +221,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Nationalité</span>
                   {{ form.nationality }}
                 </div>
-                  {{ form.nationality.errors }}
+                  {% for error in form.nationality.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.nationality.errors }} -->
               </div>
               
               <div>
@@ -171,7 +235,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Ecole d'origine</span>
                   {{ form.school_origin }}
                 </div>
-                  {{ form.school_origin.errors}}
+                  {% for error in form.school_origin.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.school_origin.errors}} -->
               </div>
               <div>
                 <span class="hide">{{ form.year_admission_bac.label_tag }}</span>
@@ -179,7 +248,12 @@
                   <span class="input-group-addon " id="sizing-addon3">Année Baccalauréat</span>
                   {{ form.year_admission_bac }}
                 </div>
-                  {{ form.year_admission_bac.errors}}
+                  {% for error in form.year_admission_bac.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.year_admission_bac.errors}} -->
               </div>
               <div>
                 <span class="hide">{{ form.pv.label_tag }}</span>
@@ -187,15 +261,25 @@
                   <span class="input-group-addon " id="sizing-addon3">PV Baccalauréat</span>
                   {{ form.pv}}
                 </div>
-                   {{ form.pv.errors }}
+                  {% for error in form.pv.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                   <!-- {{ form.pv.errors }} -->
               </div>
               <div>
                 <span class="hide">{{ form.option.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <div id="options" style="padding-top: 10px;" >
                   <span class="input-group-addon " id="sizing-addon3">Options</span>
                   {{ form.option}}
                 </div>
-                  {{ form.option.errors}}
+                  {% for error in form.option.errors %}
+                    <div class="row">
+                      <div class="alert alert-danger">{{error}}</div>
+                    </div>
+                  {% endfor %}
+                  <!-- {{ form.option.errors}} -->
               </div>
             </div>
           </div>
@@ -210,7 +294,12 @@
               <span class="input-group-addon " id="sizing-addon3">Nom du Père</span>
               {{ form.fathers_name }}
             </div>
-              {{ form.fathers_name.errors }}
+              {% for error in form.fathers_name.errors %}
+                <div class="row">
+                  <div class="alert alert-danger">{{error}}</div>
+                </div>
+              {% endfor %}
+              <!-- {{ form.fathers_name.errors }} -->
           </div>
           <div>
             <span class="hide">{{ form.mothers_name.label_tag }}</span>
@@ -218,7 +307,12 @@
               <span class="input-group-addon " id="sizing-addon3">Nom de la mère</span>
               {{ form.mothers_name }}
             </div>
-               {{ form.mothers_name.errors }}
+              {% for error in form.mothers_name.errors %}
+                <div class="row">
+                  <div class="alert alert-danger">{{error}}</div>
+                </div>
+              {% endfor %}
+               <!-- {{ form.mothers_name.errors }} -->
           </div>
           <div>
             <span class="hide">{{ form.guardian_name.label_tag }}</span>
@@ -226,7 +320,12 @@
               <span class="input-group-addon " id="sizing-addon3">Tuteur</span>
               {{ form.guardian_name }}
             </div>
-              {{ form.guardian_name.errors }}
+              {% for error in form.guardian_name.errors %}
+                <div class="row">
+                  <div class="alert alert-danger">{{error}}</div>
+                </div>
+              {% endfor %}
+              <!-- {{ form.guardian_name.errors }} -->
           </div>
           <div>
             <span class="hide">{{ form.guardian_address.label_tag }}</span>
@@ -234,7 +333,12 @@
               <span class="input-group-addon " id="sizing-addon3">Adresse du tuteur</span>
               {{ form.guardian_address }}
             </div>
-             {{ form.guardian_address.errors }}
+              {% for error in form.guardian_address.errors %}
+                <div class="row">
+                  <div class="alert alert-danger">{{error}}</div>
+                </div>
+              {% endfor %}
+             <!-- {{ form.guardian_address.errors }} -->
           </div>
           <div>
             <span class="hide">{{ form.guardian_phone.label_tag }}</span>
@@ -242,7 +346,12 @@
               <span class="input-group-addon " id="sizing-addon3">Téléphone du tuteur</span>
               {{ form.guardian_phone }}
             </div>
-             {{ form.guardian_phone.errors }}
+            {% for error in form.guardian_phone.errors %}
+                <div class="row">
+                  <div class="alert alert-danger">{{error}}</div>
+                </div>
+              {% endfor %}
+             <!-- {{ form.guardian_phone.errors }} -->
           </div>
           <div>
            <span class="hide">{{ form.guardian_email.label_tag }}</span>
@@ -250,7 +359,12 @@
               <span class="input-group-addon " id="sizing-addon3">Email du tuteur</span>
               {{ form.guardian_email}}
             </div>
-             {{ form.guardian_email.errors }}
+              {% for error in form.guardian_email.errors %}
+                <div class="row">
+                  <div class="alert alert-danger">{{error}}</div>
+                </div>
+              {% endfor %}
+             <!-- {{ form.guardian_email.errors }} -->
           </div>
     
         </div>
@@ -267,6 +381,9 @@
       </form>
     </div>
   </div>
+{% endblock %}
+{% block bottom %}
+  <script src="{% static 'admission.js' %}"></script>
 {% endblock %}
 
 

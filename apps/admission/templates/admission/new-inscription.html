@@ -1,0 +1,108 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load permission_tags %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+   {% include 'admission/aside.html' %}
+  <div class="col-md-10 ">
+    <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Liste des Admis</a></li>
+          <li class="active">Nouvelle Inscription</li>
+        </ol>
+    </div>
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{ error }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="row">
+    <div class="col-md-4">
+    <form action="" method="POST" id="admission-process-form">
+      {% csrf_token %}
+        <div class="">
+          <span class="hide">{{ form.registry.label_tag }}</span>
+          <div class="input-group input-group-sm" style="padding-top: 10px;" >
+            <span class="input-group-addon " id="sizing-addon3">Identifiant Personne saisie</span>
+            {{form.registry}}
+          </div>
+          <!-- {{ form.date_of_birth.errors }} -->
+           {% for error in form.registry.errors %}
+              <div class="row">
+               <div class="alert alert-danger alert-form-error">{{error}}</div>
+             </div>
+            <!-- <label class="control-label">{{ error }}</label> -->
+            {% endfor %}
+       </div>
+       <div class="">
+          <span class="hide">{{ form.active_year.label_tag }}</span>
+          <div class="input-group input-group-sm" style="padding-top: 10px;" >
+            <span class="input-group-addon " id="sizing-addon3">Année Academique</span>
+            {{form.active_year}}
+          </div>
+          <!-- {{ form.date_of_birth.errors }} -->
+           {% for error in form.active_year.errors %}
+              <div class="row">
+               <div class="alert alert-danger alert-form-error">{{error}}</div>
+             </div>
+            <!-- <label class="control-label">{{ error }}</label> -->
+            {% endfor %}
+       </div>
+       <button class="btn btn-primary btn-sm" id="inscription-button" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Inscrire</button>
+
+      <!-- {{ form.as_p}} -->
+
+    </form>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+      <div class="panel panel-default" id="inscription-panel">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Information Additionnels sur {{registration.first_name}} {{registration.last_name}}</div>
+
+      <table class="table table-bordered table-sm" >
+            <thead>
+                <tr>
+                <th>numero de saisie</th>
+                <th>Formation</th>
+                <th>Programme</th>
+                <th>date de paiement</th>
+                <th>Montant payé</th>
+        
+             </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{registration.registry_number }}</td>
+                <td>{{registration.course}}</td>
+                <td>{{registration.course_level}}</td>
+                {% for info in reg_payement %}
+                <td>{{ info.date}}</td>
+                <td>{{ info.amount }}</td>
+                {% endfor %}
+            </tr>
+
+            </tbody>
+        
+        ...
+      </table>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}
+{% block bottom %}
+  <script src="{% static 'admission.js' %}"></script>
+{% endblock %}

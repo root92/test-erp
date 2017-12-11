@@ -1,6 +1,7 @@
 {% include 'core/base.html' %}
 {% load static %}
 {% load admission_tags %}
+{% load permission_tags %}
 
 {% load humanize %}
 
@@ -18,12 +19,12 @@
         <div class="page-header">
             <ol class="breadcrumb">
             <li><a href="#">Admission</a></li>
-            <li class="active">Liste des Saisies</li>
+            <li class="active">Liste des Admis</li>
             </ol>
             <div class="row">
-            <div class="col-md-8">
-                <a class="btn btn-primary btn-sm" href="{% url 'new-admission-process' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
-            </div>
+            <!-- <div class="col-md-8">
+                <a class="btn btn-primary btn-sm" href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
+            </div> -->
             <div class="col-md-4">
                 <div class="input-group input-group-sm">
                 <!-- <input type="text" class="form-control" aria-label="..."> -->
@@ -44,7 +45,7 @@
         </div>
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading">List de processus d'admission
+            <div class="panel-heading">Liste des admis
             </div>
             <div class="panel-body">
             <p>...</p>
@@ -56,42 +57,106 @@
                 <tr>
                 <!-- <th><input class="form-check-input" type="checkbox" value=""></th> -->
                 <th scope="col">N<sup>o</sup></th>
-                <th>DATE</th>
+                <th>Date d'admission</th>
                 <th>Nom de la personne saisie</th>
                 <th>Numero de la personne saisie</th>
-                <th>Montant de frais d'inscriptions payé</th>
-                <th>frais d'inscription du departement</th>
-                <th>solde</th>
+                <th>Formation choisie</th>
+                <th>Programme choisie</th>
                 <th>Statut</th>
+                <th>Frais d'inscription</th>
         
              </tr>
             </thead>
             <tbody>
                 {% for process in adprocess %}
+                {% if process.commitee_decision != 'rejeté' %}
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
-                <td>{{process.payment_date|date:"DATE_FORMAT" }}</td>
+                <td>{{process.add_date|date:"DATE_FORMAT" }}</td>
                 <td>{{process.registree}}</td>
-                <td>{{process.registree.registry_number}}</td>
-                <td>{{ process.registration_fees_paid|intcomma}}</td>
-                <td>{{ process.department.admission_fees|intcomma }}</td>
-                <td>{{ process.registration_fees_paid|subtract:process.department.admission_fees|intcomma }}</td> 
-                {% if  process.registration_fees_paid|subtract:process.department.admission_fees >= 0 %}
-                 <td class="accepted">Accepté</td> 
+                <td class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true" id="registrationMenu">{{process.registree.registry_number}}
+                    </a>
+                         {% if process.registree.reg_inscription.id %}
+                        <ul class="dropdown-menu registration-menu hide" aria-labelledby="registrationMenu" id="regist-menu">
+                           <!--  <li>
+                                <a href="" class="">
+                                    Plus d'infos sur {{process.registree.first_name}} {{process.registree.last_name}}
+                                </a>
+                            </li> -->
+                            <li>
+                               
+                                  <!-- Check for permissions -->
+                                <!-- {% if user|has_role:'head_admission_service' %}
+                                    {% if process.registree.registration_payement.count > 0 %}
+                                <a href="{{ process.registree.get_inscription_url }}" class="">
+                                    Processus d'Inscription administrative
+                                </a>
+                                    {% else %}
+                                    <a class="" style="background-color: #e3e3e3; color: black;">
+                                    Processus d'inscription administrative
+                                    </a>
+                                    {% endif %}
+                                {% else %}
+                                <a class="" style="background-color: #e3e3e3; color: black;">
+                                    Processus d'inscription administrative
+                                </a>
+                                {% endif %} -->
+                            </li>
+                           
+                        </ul>
+                        {% else %}
+                        <ul class="dropdown-menu registration-menu" aria-labelledby="registrationMenu" id="regist-menu">
+                           <!--  <li>
+                                <a href="" class="">
+                                    Plus d'infos sur {{process.registree.first_name}} {{process.registree.last_name}}
+                                </a>
+                            </li> -->
+                            <li>
+                               
+                                  <!-- Check for permissions -->
+                                {% if user|has_role:'head_admission_service' %}
+                                    {% if process.registree.registration_payement.count > 0 %}
+                                <a href="{{ process.registree.get_inscription_url }}" class="">
+                                    Inscrire
+                                </a>
+                                    {% else %}
+                                    <a class="" style="background-color: #e3e3e3; color: black;">
+                                    inscrire
+                                    </a>
+                                    {% endif %}
+                                {% else %}
+                                <a class="" style="background-color: #e3e3e3; color: black;">
+                                    Inscrire
+                                </a>
+                                {% endif %}
+                            </li>
+                           
+                        </ul>
+                        {% endif %}
+                    
+                </td>
+                <td>{{ process.registree.course}}</td>
+                <td>{{ process.registree.course_level}}</td>
+                {% if process.registree.reg_inscription.id %}
+                <td class="">Inscrit</td> 
                 {% else %}
-                   <td class="rejected">Rejecté</td> 
-                 {% endif %}
-
+                <td class="">Nouveau</td> 
+                {% endif %}
+                {% if process.registree.registration_payement.count > 0 %}
+                 <td class="">Payés</td> 
+                {% else %}
+                 <td class="">Non payés</td> 
+                {% endif %}
 
 
             </tr>
+            {% endif %}
             {% endfor %}
 
             </tbody>
         
             </table>
-        
-            <!-- <app-registree-details [item]="selectedItem"></app-registree-details> -->
         
         </div>
         

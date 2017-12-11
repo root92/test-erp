@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Registration, Admission, AdmissionProcess
+from .models import Registration, Inscription, AdmissionProcess
 
 
 @admin.register(Registration)
@@ -35,7 +35,7 @@ class RegistrationAdmin(admin.ModelAdmin):
         }),
     )
 
-@admin.register(Admission)
+@admin.register(Inscription)
 class AdmissionAdmin(admin.ModelAdmin):
 
     list_display = ('matricule', 'registry', 'admission_add_date')

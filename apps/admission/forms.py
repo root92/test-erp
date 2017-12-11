@@ -1,8 +1,22 @@
 from django import forms
+from django.core.exceptions import NON_FIELD_ERRORS
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import check_password
 
-from .models import Registration, Admission, AdmissionProcess
+from .models import Registration, Inscription, AdmissionProcess
 
 class RegistrationForm(forms.ModelForm):
+    GENDERS =(
+        ('homme', 'Homme'),
+        ('femme', 'Femme')
+        )
+    OPTIONS = (
+        ('mathématique', 'Mathématiques'),
+        ('experimentale', 'Experimentales'),
+        ('sociale', 'Sociales'),
+    )
+    gender = forms.ChoiceField(choices=GENDERS, widget=forms.RadioSelect())
+    option = forms.ChoiceField(choices=OPTIONS, widget=forms.RadioSelect())
     class Meta:
         model = Registration
         fields = '__all__'
@@ -29,10 +43,10 @@ class RegistrationForm(forms.ModelForm):
             'image': 'Choisir une image'
         }
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control', }),
+            'first_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
             'last_name': forms.TextInput(attrs={'class': 'form-control form-element' }),
-            'gender': forms.Select(attrs={'class': 'form-control form-element'}),
-            'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017'}),
+            # 'gender': forms.Select(attrs={'class': 'form-control form-element'}),
+            'date_of_birth': forms.DateInput(attrs={'class': 'form-control form-element','id':'datepicker'}), #'placeholder':'veuillez entre une date au format 16-02-2017',
             'nationality': forms.Select(attrs={'class': 'form-control form-element'}),
             'fathers_name': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'mothers_name': forms.TextInput(attrs={'class': 'form-control form-element'}),
@@ -45,7 +59,7 @@ class RegistrationForm(forms.ModelForm):
             'guardian_email': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'guardian_address': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'school_origin': forms.TextInput(attrs={'class': 'form-control form-element'}),
-            'option': forms.Select(attrs={'class': 'form-control form-element'}),
+            # 'option': forms.Select(attrs={'class': 'form-control form-element'}),
             'year_admission_bac': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'pv': forms.TextInput(attrs={'class': 'form-control form-element'}),
             'image': forms.FileInput(attrs={"accept":".jpg, .jpeg, .png"}),
@@ -53,35 +67,61 @@ class RegistrationForm(forms.ModelForm):
             'course': forms.Select(attrs={'class': 'form-control form-element'}),
             'course_level': forms.Select(attrs={'class': 'form-control form-element'}),
         }
-  
+
+
+    
      
 
 class AdmissionProcessForm(forms.ModelForm):
+    CHOICES =(
+        ('approuvé', 'Approuvé'),
+        ('rejeté', 'Rejeté'))
+    commitee_decision = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect())
     class Meta:
         model = AdmissionProcess
+        # error_messages = {
+        #     NON_FIELD_ERRORS: {
+        #         'pass_bac': "Not are not unique.",
+        #     }
+        # }
         fields = '__all__'
+        exclude = ['user']
         labels = {
-            'registree': 'Personne saisie',
-            'department': 'Departement',
-            'payment_date': 'Date de paiement',
-            'registration_fees_paid': "Montant de frais d'inscription payé"
+            'registree_number': 'Numero de saisie',
+            'registree_name': 'Personne saisie',
+            'pass_bac': 'Baccalauréat obtenu',
+            'pass_admission_test': 'Note requise au test d\'admission obtenu',
+            'pass_medical_test': 'A passé son examen medical',
+            'commitee_decision': 'Decision du comité d\'admission',
+            'comment': 'Ajouter un commentaire',
             }
         widgets = {
-            'registree': forms.Select(attrs={'class': 'form-control form-element'}),
-            'department': forms.Select(attrs={'class': 'form-control form-element'}),
-            'payment_date': forms.DateInput(attrs={'class': 'form-control form-element', 'placeholder':'16-02-2017' }),
-            'registration_fees_paid': forms.TextInput(attrs={'class': 'form-control form-element' }),
+            'registree': forms.TextInput(),#attrs={'class':'hide'}),
+            'registree_number': forms.TextInput(attrs={'class': 'form-control form-element', 'readonly':'readonly'}),
+            'registree_name': forms.TextInput(attrs={'class': 'form-control form-element', 'readonly':'readonly'}),
+            'pass_bac': forms.CheckboxInput(attrs={'class':'checkbox-input bac-checkbox',
+                         "oninvalid":"this.setCustomValidity('Ce champ est obligatoire')", "oninput":"setCustomValidity('')"}),
+            'pass_admission_test': forms.CheckboxInput(attrs={ 'class':'checkbox-input',
+                        "oninvalid":"this.setCustomValidity('Ce champ est obligatoire')", "oninput":"setCustomValidity('')"}),
+            'pass_medical_test': forms.CheckboxInput(attrs={'class':'checkbox-input',
+                        "oninvalid":"this.setCustomValidity('Ce champ est obligatoire')", "oninput":"setCustomValidity('')"}),
+            # 'commitee_decision': forms.RadioSelect(),
+            'comment':forms.Textarea(attrs={'class': 'form-control admis-process-comment', 'required':False})
+            # 'approved_by_commitee': forms.CheckboxInput(attrs={'required':True, 'class':'checkbox-input',
+            #             "oninvalid":"this.setCustomValidity('Ce champ est obligatoire')", "oninput":"setCustomValidity('')"}),
+            # 'admission_denied': forms.CheckboxInput(attrs={'class':'checkbox-input'}),
             }
 
 
-class AdmissionForm(forms.ModelForm):
+
+
+
+class InscriptionForm(forms.ModelForm):
     class Meta:
-        model = Admission
+        model = Inscription
         fields ='__all__'
-        widgets = {
-            'registree': forms.Select(attrs={'class': 'form-control form-element'}),
-            'academic_year': forms.Select(attrs={'class': 'form-control form-element'}),
-            'class_level': forms.Select(attrs={'class': 'form-control form-element'}),
-        }
+        exclude = ['user']
+        widgets = {}
+        
 
 

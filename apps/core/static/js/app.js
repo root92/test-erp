@@ -83,3 +83,25 @@ function returnFileSize(number) {
     return (number/1048576).toFixed(1) + 'MB';
   }
 }
+
+
+// Customizing the Html invalid message for form inputs
+
+// select all inputs with a required Attributes 
+var requireInput = document.querySelectorAll('input:required');
+
+//Add an event listener to each input checking for invalid input and change the default message
+requireInput.forEach(function(element) {
+    element.oninvalid = function(event) {
+    event.target.setCustomValidity('Ce champ est obligatoire');
+  }
+});
+
+//Add an event listener to each input checking for  Input  and 
+// remove the invalid message set previously to allow filling the form
+requireInput.forEach(function(element) {
+    element.oninput = function(event) {
+    event.target.setCustomValidity('');
+  }
+});
+

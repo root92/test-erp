@@ -92,6 +92,13 @@ form button{
 	margin-left: 2%;
 }
 
+.modal-footer button,
+.admission-process-buttons button{
+	width: 20%;
+	margin-left: 2%;
+}
+
+
 
 
 /* REGISTRATION DETAIL PAGE */
@@ -147,5 +154,78 @@ form button{
 	margin-right: 1px;
 }
 
+#bootstrap-overrides .checkbox-input{
+	margin-left: 10%;
+	-ms-transform: scale(1.5); /* IE */
+	-moz-transform: scale(1.5); /* FF */
+	-webkit-transform: scale(1.5); /* Safari and Chrome */
+	-o-transform: scale(1.5); /* Opera */
+	padding: 10px;
+	margin-top: 6px;
+}
 
-/*BUTTON*/
+/*Customize the first checkbox of admission process form*/
+#bootstrap-overrides .bac-checkbox{
+	margin-left: 28%;
+}
+
+/*Comment field on admission proces form*/
+
+#bootstrap-overrides .admis-process-comment{
+    height: 100px;
+    
+}
+
+#admission-process-comment{
+	margin-left: 30px;
+	width: 94%;
+
+}
+
+/*Commitee decison field(radio buttons) admssion process*/
+#id_commitee_decision li{
+   display: inline-block;
+}
+/*Gender radio buttons id Generate by django*/
+#id_gender li{
+	display: inline;
+	margin-left: 50px;
+}
+/*OPTIIONS RADIO BUTTONS*/
+#id_option li{
+	display: inline;
+}
+
+
+/*Inscription submit button*/
+#inscription-button{
+	margin: 10px 10px;
+	width: 200px;
+}
+
+/*Inscription Panel*/
+#inscription-panel{
+	margin-right: 20px;
+}
+
+/*#id_commitee_decision_0,
+label[for="id_commitee_decision_0"]{
+	display: none;
+}*/
+
+
+
+/*input:invalid {
+    border-color: red;
+}*/
+
+/**/
+
+/*input[type='checkbox']:required,
+input:required,
+textarea:required {
+  border-color: red !important;
+}
+input:required + label {
+  color: red;
+}*/

@@ -1,4 +1,5 @@
 from django.db import models
+from apps.admission.models import Registration
 
 # Create your models here.
 # class students(models.Model):
@@ -18,5 +19,12 @@ from django.db import models
 
 
 # the payement of de students
-# class payments(models.Model):
+class Payement(models.Model):
+    registree = models.ForeignKey(Registration, on_delete=models.CASCADE, related_name='registration_payement')
+    payment_type = models.CharField(max_length=64)
+    date = models.DateField()
+    amount = models.DecimalField(max_digits=32, decimal_places=2)
+
+    def __str__(self):
+        return '{0} {1}'.format(self.payment_type, self.registree.first_name)
 

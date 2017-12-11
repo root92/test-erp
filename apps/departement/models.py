@@ -40,7 +40,7 @@ class CourseLevel(models.Model):
                 ('mas2', 'Masters 2'),
             )),
     )
-    code_level = models.CharField(max_length=10)
+    code_level = models.CharField(max_length=16)
     level = models.CharField(max_length=7, choices=LEVEL_CHOICE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 

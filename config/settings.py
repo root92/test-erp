@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'apps.school.apps.SchoolConfig',
     'apps.students.apps.StudentsConfig',
     'apps.core',
+    'rolepermissions',
     # 'apps.humans_ressources.apps.HumansRessourcesConfig',
 ]
 

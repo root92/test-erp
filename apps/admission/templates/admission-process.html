@@ -1,0 +1,103 @@
+{% include 'core/base.html' %}
+{% load static %}
+{% load admission_tags %}
+
+{% load humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row admission-process registration-page">
+     {% include 'admission/aside.html' %}
+
+    <div class="col-md-10">
+        <div class="page-header">
+            <ol class="breadcrumb">
+            <li><a href="#">Admission</a></li>
+            <li class="active">Liste des Saisies</li>
+            </ol>
+            <div class="row">
+            <div class="col-md-8">
+                <a class="btn btn-primary btn-sm" href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group input-group-sm">
+                <!-- <input type="text" class="form-control" aria-label="..."> -->
+                <input type="text" class="form-control" aria-label="..." >
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> <span class="caret"></span></button>
+                    <!-- <ul class="dropdown-menu dropdown-menu-right">
+                    <li><input type="checkbox" aria-label="...">&nbsp;Date</li>
+                    <li><input type="checkbox" aria-label="...">&nbsp;Personne</li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    </ul> -->
+                </div>
+                </div>
+            </div>
+            </div>
+        
+        </div>
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">List de processus d'admission
+            </div>
+            <div class="panel-body">
+            <p>...</p>
+            </div>
+            <!-- <button type="button" class="btn btn-primary" (click)="onCreate">Create</button> -->
+            <!-- Table -->
+            <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                <!-- <th><input class="form-check-input" type="checkbox" value=""></th> -->
+                <th scope="col">N<sup>o</sup></th>
+                <th>DATE</th>
+                <th>Nom de la personne saisie</th>
+                <th>Numero de la personne saisie</th>
+                <th>Montant de frais d'inscriptions payé</th>
+                <th>frais d'inscription du departement</th>
+                <th>solde</th>
+                <th>Statut</th>
+        
+             </tr>
+            </thead>
+            <tbody>
+                {% for process in adprocess %}
+            <tr>
+                <td scope="row">{{forloop.counter}}</td>
+                <td>{{process.payment_date|date:"DATE_FORMAT" }}</td>
+                <td>{{process.registree}}</td>
+                <td>{{process.registree.registry_number}}</td>
+                <td>{{ process.registration_fees_paid|intcomma}}</td>
+                <td>{{ process.department.admission_fees|intcomma }}</td>
+                <td>{{ process.registration_fees_paid|subtract:process.department.admission_fees|intcomma }}</td> 
+                {% if  process.registration_fees_paid|subtract:process.department.admission_fees >= 0 %}
+                 <td class="accepted">Accepté</td> 
+                {% else %}
+                   <td class="rejected">Rejecté</td> 
+                 {% endif %}
+
+
+
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        
+            </table>
+        
+            <!-- <app-registree-details [item]="selectedItem"></app-registree-details> -->
+        
+        </div>
+        
+        <!-- Modal -->
+       
+    </div>
+</div>
+
+{% endblock %}

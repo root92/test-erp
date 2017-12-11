@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load permission_tags %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'admission.css' %}">
@@ -35,10 +36,10 @@
                     <li><a href="#">Separated link</a></li>
                     </ul>
                 </div><!-- /btn-group -->
-                </div><!-- /input-group -->  
+                </div><!-- /input-group -->
             </div>
             </div>
-        
+
         </div>
         <div class="panel panel-primary">
             <!-- Default panel contents -->
@@ -76,30 +77,53 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="">
+                                 {% if registration.process_registree.id %}
+                                 <a class="hide" style="background-color: #e3e3e3; color: black;">
+                                     Déjà Admis(e)
+                                 </a>
+
+                                 {% else %}
+                                  {% if user|has_role:'head_admission_service' %}
+                                <a href="{{ registration.get_registration_process_url }}" class="">
                                     Processus d'admission
                                 </a>
+                                   {% else %}
+                                <a class="" style="background-color: #e3e3e3; color: black;">
+                                    Processus d'admission
+                                </a>
+                                {% endif %}
+                                {% endif %}
                             </li>
-                           
+
                         </ul>
-                    
+
                 </td>
                 <td>{{registration.first_name}}</td>
                 <td>{{registration.last_name}}</td>
-                <td>A definir</td>
+                {% if registration.process_registree.commitee_decision == 'approuvé' %}
+                  <td class="registree-status" style='color: blue;'> Admis</td>
+                {% elif registration.process_registree.commitee_decision == 'approved' %}
+                  <td class="registree-status"> Admis</td>
+                {% elif registration.process_registree.commitee_decision == 'Rejeté' %}
+                  <td class="registree-status" style="color:red;"> Rejeté</td>
+                {% elif registration.process_registree.commitee_decision == 'rejeté' %}
+                  <td class="registree-status" style="color:red;"> Rejeté</td>
+                {% else %}
+                  <td class="registree-status"> Nouveau</td>
+                {% endif %}
 
             </tr>
             {% endfor %}
 
             </tbody>
-        
+
             </table>
-        
+
             <!-- <app-registree-details [item]="selectedItem"></app-registree-details> -->
-        
+
         </div>
-        
-    
+
+
     </div>
 </div>
 

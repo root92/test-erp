@@ -11,11 +11,13 @@
 	<link rel="stylesheet"  href="{% static 'css/sweetalert.css'%}"> 
 	<link rel="stylesheet"  href="{% static 'css/animate.min.css'%}">
   <link rel="stylesheet"  href="{% static 'css/bootstrap-dropdownhover.min.css'%}">
+  <link rel="stylesheet"  href="{% static 'css/jquery-ui.min.css'%}">
   <link rel="stylesheet"  href="{% static 'css/style.css'%}">
+
 	{% block head %}{% endblock %}
 
 </head>
-<body>
+<body id='bootstrap-overrides'>
     <header>
         <nav class="navbar navbar-default navigation" role="navigation">
           <div class="container">
@@ -39,7 +41,7 @@
                 <li><a href="{% url 'registration' %}">Admission</a></li>
                 <li><a href="">Etudiants</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInscriptionLink" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="true">Inscriptions<span><b class="caret"></b></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInscriptionLink" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">Inscriptions<span><b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownInscriptionLink" id="inscription-menu">
                         <li><a href="">Inscription Administrative</a></li>
@@ -48,7 +50,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Configurations<span><b class="caret"></b></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">Configurations<span><b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownConfigLink" id="config-menu">
                         <div class="col-md-1"></div>
@@ -90,7 +92,7 @@
               {% endif %}
               <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ user.username }}<span><b class="caret"></b></span></a>
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUserLink" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">{{ user.username }}<span><b class="caret"></b></span></a>
                   <ul class="dropdown-menu aria-labelledby="navbarDropdownUserLink"">
                     <!-- <li><a href=""><span class="badge pull-right" id="unread-count">0</span> Inbox</a></li> -->
                     <li><a href="">Mon Compte</a></li>
@@ -114,6 +116,8 @@
 	<script src="{% static 'js/jquery.min.js'%}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/bootstrap-dropdownhover.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-dropdownhover.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.min.js' %}"></script>
   <script src="{% static 'js/app.js' %}"></script>
 	{% block bottom %}{% endblock %}
 </body>

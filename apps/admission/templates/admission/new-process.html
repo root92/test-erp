@@ -1,0 +1,186 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load permission_tags %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="row container">
+   {% include 'admission/aside.html' %}
+  <div class="col-md-10 ">
+    <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">Admission</a></li>
+          <li><a href="#">Liste des Admis</a></li>
+          <li class="active">Nouvelle processus</li>
+        </ol>
+    </div>
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{ error }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'new-process' registration.id %}" method="POST" id="admission-process-form">
+      {% csrf_token %}
+
+      <!-- {{ form.as_p}} -->
+      <div class="hide">
+        <span class="hide">{{ form.registree.label_tag }}</span>
+        <div class="input-group input-group-sm" style="padding-top: 10px;" >
+          <span class="input-group-addon " id="sizing-addon3">Identifiant Personne saisie</span>
+          {{form.registree}}
+        </div>
+        <!-- {{ form.date_of_birth.errors }} -->
+         {% for error in form.registree.errors %}
+            <div class="row">
+             <div class="alert alert-danger alert-form-error">{{error}}</div>
+           </div>
+          <!-- <label class="control-label">{{ error }}</label> -->
+          {% endfor %}
+      </div>
+      <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+              <div class="">
+                <span class="hide">{{ form.registree_number.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Numéro de saisie</span>
+                  {{form.registree_number}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.registree_number.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger alert-form-error">{{error}}</div>
+                   </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="">
+                <span class="hide">{{ form.registree_name.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " id="sizing-addon3">Nom </span>
+                  {{form.registree_name}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.registree_name.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger alert-form-error">{{error}}</div>
+                   </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="">
+                <span class="hide">{{ form.pass_bac.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " > A obtenu son bac</span>
+                  {{form.pass_bac}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.pass_bac.errors %}
+                <div class="row">
+                   <div class="alert alert-danger alert-form-error">{{error}}</div>
+                </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+            </div>
+            <div class="col-md-6">
+               <div class="">
+                <span class="hide">{{ form.pass_admission_test.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " >Note requise au test d'admission obtenu</span>
+                  {{form.pass_admission_test}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.pass_admission_test.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger alert-form-error">{{error}}</div>
+                   </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="">
+                <span class="hide">{{ form.pass_medical_test.label_tag }}</span>
+                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                  <span class="input-group-addon " > A passé son examen medical</span>
+                  {{form.pass_medical_test}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.pass_medical_test.errors %}
+                <div class="row">
+                   <div class="alert alert-danger alert-form-error">{{error}}</div>
+                </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+            </div>
+            <div class="col-md-6">
+               <div class="">
+                <span class="hide">{{ form.commitee_decision.label_tag }}</span>
+                <div class="" style="padding-top: 10px;" >
+                  <span class="input-group-addon " >Decision de la commission d'admission</span>
+                  {{form.commitee_decision}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.commitee_decision.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger alert-form-error">{{error}}</div>
+                   </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+            </div>
+        <div class="row">
+          <div class=""></div>
+          <div class="">
+                <span class="hide">{{ form.comment.label_tag }}</span>
+                <div id="admission-process-comment" style="padding-top: 10px;" >
+                  <div class="input-group-addon comment-label">Ajouter un commentaire</div>
+                  {{form.comment}}
+                </div>
+                <!-- {{ form.date_of_birth.errors }} -->
+                 {% for error in form.comment.errors %}
+                    <div class="row">
+                     <div class="alert alert-danger alert-form-error">{{error}}</div>
+                   </div>
+                  <!-- <label class="control-label">{{ error }}</label> -->
+                  {% endfor %}
+              </div>
+          
+        </div>
+      </div>
+    </div>
+        <div class="admission-process-buttons"> 
+        <button class="btn btn-primary btn-sm" id="new-process-submit-button" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Inscrire</button>
+        <!-- <button type="button" class="btn btn-default" href="/home/">Annulé l'Operation</button> -->
+
+       <p></p>
+
+
+      
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+{% block bottom %}
+  <script src="{% static 'admission.js' %}"></script>
+{% endblock %}

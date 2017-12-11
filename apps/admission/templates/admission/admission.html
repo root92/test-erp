@@ -9,7 +9,7 @@
     <div class="col-md-10">
     <div class="page-header">
             <ol class="breadcrumb">
-            <li><a href="#">Admission</a></li>
+            <li><a href="#">inscription</a></li>
             <li class="active">Liste des Inscriptions</li>
             </ol>
             <a class="btn btn-primary btn-sm" href="{% url 'new-admission' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
@@ -35,9 +35,9 @@
         
         <div class="panel panel-primary">
             <!-- Default panel contents -->
-            <div class="panel-heading">Admission List
+            <div class="panel-heading">inscription List
             <!-- <button class="btn-save" >Create</button> -->
-            <!-- <a routerLink="../newAdmission">New Admission</a> -->
+            <!-- <a routerLink="../newinscription">New inscription</a> -->
             </div>
             <div class="panel-body">
             </div>
@@ -52,13 +52,13 @@
                 </tr>
             </thead>
             <tbody>
-            {% for admission in admissions %}
+            {% for inscription in inscriptions %}
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
-                <td>{{admission.admission_add_date|date:"SHORT_DATE_FORMAT" }}</td>
-                <td><a href="{{ admission.get_absolute_url }}" class="">{{admission.matricule}}</a></td>
-                <td>{{admission.registry.first_name}}</td>
-                <td>{{admission.registry.last_name}}</td>
+                <td>{{inscription.inscription_add_date|date:"SHORT_DATE_FORMAT" }}</td>
+                <td><a href="{{ inscription.get_absolute_url }}" class="">{{inscription.matricule}}</a></td>
+                <td>{{inscription.registry.first_name}}</td>
+                <td>{{inscription.registry.last_name}}</td>
 
             </tr>
             {% endfor %}
@@ -66,7 +66,7 @@
         
             </table>
         </div>
-         <div class="modal fade" id="modal-admission">
+         <div class="modal fade" id="modal-inscription">
         <div class="modal-dialog">
           <div class="modal-content">
 

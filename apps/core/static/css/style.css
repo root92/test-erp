@@ -130,3 +130,24 @@ nav .btn-default{
 	padding: 2% 2%;
 	margin-top: -3%;
 }
+
+/*OVERRIDING BOOTSTRAP READONLY FIELD STYLES*/
+form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: white;
+    opacity: 1;
+}
+
+/*Overriding bootstrap border right on form inputs*/
+.input-group-addon{
+  border-bottom-right-radius: 2px !important;
+  border-top-right-radius: 2px !important;
+  border:1px solid #ccc !important;
+  /*border-bottom: none !important;*/
+}
+
+/*Adding border color to requied form fields*/
+input[type='checkbox']:required,
+input:required,
+textarea:required {
+  border-width: 2px  !important;
+}

@@ -40,8 +40,15 @@ jQuery(document).ready(function(){
   $(".btn-delete").on("click", loadForm);
   $(".js-delete-registration-form").on("submit", saveForm);
 
+  
+  // Adding datepicker for dates
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+  
 
+
+  
 });
-
 
 

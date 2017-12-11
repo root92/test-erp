@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.urls import reverse #Used to generate urls by reversing the URL patterns
+from django.contrib.auth.models import User
 
 from django_countries.fields import CountryField
 
@@ -24,10 +25,10 @@ def registration_number():
         last_reg = Registration.objects.last()
     except Registration.DoesNotExist:
         last_reg = None
-    
+
     if not last_reg:
         return(prefix % (current_year, 1))
-    else: 
+    else:
         last_id = last_reg.id
         current_id = int(last_id) + 1
         return (prefix % (current_year, current_id))
@@ -41,9 +42,9 @@ class Registration(models.Model):
     )
 
     OPTION_CHOICE = (
-        ('sm', 'Sciences Mathématiques'),
-        ('se', 'Sciences Experimentales'),
-        ('ss', 'Sciences Sociales'),
+        ('mathématique', 'Mathématiques'),
+        ('experimentale', 'Experimentales'),
+        ('sociale', 'Sociales'),
     )
 
     registry_number = models.CharField(max_length=18, default=registration_number, unique=True, editable=False)
@@ -63,7 +64,7 @@ class Registration(models.Model):
     guardian_email = models.EmailField(max_length=100, blank=True, null=True)
     guardian_address = models.CharField(max_length=100, blank=True, null=True)
     school_origin = models.CharField(max_length=100, blank=True, null=True)
-    option = models.CharField(max_length=2, choices=OPTION_CHOICE)
+    option = models.CharField(max_length=32, choices=OPTION_CHOICE)
     year_admission_bac = models.CharField(max_length=4, blank=True, null=True)
     pv = models.CharField(max_length=10, blank=True, null=True)
     registration_add_date = models.DateTimeField(auto_now_add=True)
@@ -73,7 +74,7 @@ class Registration(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     course_level = models.ForeignKey(CourseLevel, on_delete=models.CASCADE)
     # student_card=models.CharField(max_length=30, editable=False, blank=True, null=True)
-    
+
 
     class Meta:
         ordering = ['pk']
@@ -89,6 +90,12 @@ class Registration(models.Model):
     def get_edit_url(self):
         return reverse('edit-registration', args=[str(self.id)])
 
+    def get_registration_process_url(self):
+        return reverse('new-process', args=[str(self.id)])
+
+    def get_inscription_url(self):
+        return reverse('new-inscription', args=[str(self.id)])
+
     def __str__(self):
         return '{0} {1}'.format(self.first_name, self.last_name)
 
@@ -98,10 +105,10 @@ def student_number():
     current_year = datetime.date.today().year
     prefix = "Mat-%d-%07d"
     try:
-        last_student = Admission.objects.last()
+        last_student = Inscription.objects.last()
     except Admission.DoesNotExist:
         last_student = None
-   
+
     if not last_student:
         return(prefix % (current_year, 1))
     else:
@@ -110,30 +117,20 @@ def student_number():
         return(prefix % (current_year, current_id))
 
 
-#Define Admission model
-class Admission(models.Model):
-    registry = models.OneToOneField(Registration, on_delete=models.CASCADE)
-    # fees = models.IntegerField()
-    matricule = models.CharField(max_length=18, default=student_number, unique=True, editable=False)
-    admission_add_date = models.DateTimeField(auto_now_add=True)
-    admission_modify_date = models.DateTimeField(auto_now=True)
-    
-    def get_absolute_url(self):
-        """
-        Returns the url to access a particular registration instance.
-        """
-        return reverse('admission-detail', args=[str(self.id)])
-
-    def __str__(self):
-        return '{0}'.format(self.registry)
-
-
 #Define Admission process, it is a prerequisite before being accepted into the universtity
 class AdmissionProcess(models.Model):
-    registree = models.ForeignKey(Registration, on_delete=models.CASCADE)
-    payment_date = models.DateField()
-    registration_fees_paid = models.DecimalField(max_digits=32, decimal_places=2)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='admission_process')
+
+    registree = models.OneToOneField(Registration, on_delete=models.CASCADE, related_name="process_registree")
+    registree_number = models.CharField(max_length=50)
+    registree_name = models.CharField(max_length=50)
+    pass_bac = models.BooleanField()
+    pass_admission_test = models.BooleanField()
+    pass_medical_test = models.BooleanField()
+    comment = models.TextField(max_length=1000, null=True, blank=True)
+    commitee_decision = models.CharField(max_length=30)
+    add_date = models.DateTimeField(auto_now_add=True)
+    modify_date = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User)
 
     # def get_absolute_url(self):
     #     """
@@ -145,7 +142,23 @@ class AdmissionProcess(models.Model):
         return(self.registree.registry_number)
 
 
+#Define Inscription model
+class Inscription(models.Model):
+    registry = models.OneToOneField(Registration, on_delete=models.CASCADE, related_name="reg_inscription")
+    matricule = models.CharField(max_length=18, default=student_number, unique=True, editable=False)
+    admission_add_date = models.DateTimeField(auto_now_add=True)
+    admission_modify_date = models.DateTimeField(auto_now=True)
+    active_year = models.ForeignKey(ActiveAcademicYear, max_length=32, on_delete=models.CASCADE)
+    user = models.ForeignKey(User)
 
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular registration instance.
+        """
+        return reverse('admission-detail', args=[str(self.id)])
+
+    def __str__(self):
+        return '{0}'.format(self.registry)
 
 # @receiver(pre_save, sender=Registration)
 # def generate_student_card(sender, instance, *args, **kwargs):
@@ -170,5 +183,3 @@ class AdmissionProcess(models.Model):
 #         last_id = last_adm.id
 #         current_id = int(last_id) + 1
 #         instance.matricule = prefix % (current_year, current_id)
-
-

@@ -3,15 +3,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-	{%block title%}<title>University management system</title>{%endblock%}
+	{%block title%}<title>Gestion d'Etablissement Scolaire</title>{%endblock%}
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" >
 	<meta name="author" content="Thierno Souleymane Diallo, Lamine Balde, Ousmane diallo, adou sow">
-	<meta name="description" content="Universtity management system that allows organizations manage efficiently courses, students, teachers etc..">
+	<meta name="description" content="School management system that allows organizations manage efficiently courses, students, teachers etc..">
 	<link rel="stylesheet"  href="{% static 'css/bootstrap.min.css'%}"> 
 	<link rel="stylesheet"  href="{% static 'css/sweetalert.css'%}"> 
 	<link rel="stylesheet"  href="{% static 'css/animate.min.css'%}">
   <link rel="stylesheet"  href="{% static 'css/bootstrap-dropdownhover.min.css'%}">
   <link rel="stylesheet"  href="{% static 'css/jquery-ui.min.css'%}">
+  <link rel="stylesheet"  href="{% static 'css/datatables.min.css'%}">
   <link rel="stylesheet"  href="{% static 'css/style.css'%}">
 
 	{% block head %}{% endblock %}
@@ -38,49 +39,40 @@
                   </a>
                 </li>
                 <li><a href="{% url 'home' %}">Acceuil</a></li>
-                <li><a href="{% url 'registration' %}">Admission</a></li>
-                <li><a href="">Etudiants</a></li>
+                <li><a href="{% url 'registration' %}">Admissions</a></li>
+                <li><a href="{% url 'home-student' %}">Elèves</a></li>
+                 <li><a href="{% url 'inscription' %}">Inscription</a></li>
+                 <li><a href="{% url 'payement' %}">Paiements</a></li>
+                 <li><a href="">Statistiques</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInscriptionLink" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">Inscriptions<span><b class="caret"></b></span>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownInscriptionLink" id="inscription-menu">
-                        <li><a href="">Inscription Administrative</a></li>
-                        <li class="divider"></li>
-                    <li><a href="{% url 'logout' %}">Inscription Peagogique</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink" data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true" aria-expanded="true">Configurations<span><b class="caret"></b></span>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownConfigLink"
+                    data-toggle="dropdown" data-hover="dropdown" aria-haspopup="true"
+                    aria-expanded="true">Configurations<span><b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownConfigLink" id="config-menu">
                         <div class="col-md-1"></div>
                         <div class="col-md-6">
                           <li><a href="">Informations sur l'Etablissement</a></li>
                           <li class="divider"></li>
-                          <li><a href="">Gérer les Departements</a></li>
-                          <li class="divider"></li>
-                          <li><a href="">Gérer les cours</a></li>
-                          <li class="divider"></li>
                           <li><a href="">Gérer les classes</a></li>
                           <li class="divider"></li>
                           <li><a href="">Gérer les Années Academiques</a></li>
                           <li class="divider"></li>
+                          <li><a href="">Gérer la Bibiliothèque</a></li>
                         </div>
                         <div class="col-md-5">
-                          <li><a href="">Gérer les enseignant</a></li>
+                          <li><a href="">Gérer les enseignants</a></li>
                            <li class="divider"></li>
-                          <li><a href="">Gérer les paiements</a></li>
+                          <li><a href="{% url 'payement' %}">Gérer les paiements</a></li>
                           <li class="divider"></li>
                           <li><a href="">Gérer les evaluations</a></li>
-                          <li class="divider"></li>
-                          <li><a href="">Gérer les années Academique</a></li>
                           <li class="divider"></li>
                           <li><a href="">Gérer des Utilisateurs</a></li>
                         </div>
                     </ul>
                  </li>
               </ul>
-              {% if not hide_search %}
+              <!-- {% if not hide_search %}
                 <form class="navbar-form navbar-left nav-search"  role="search" action="">
                   <div class="input-group" style="width:210px">
                     <input type="text" class="form-control" name="q" placeholder="Search">
@@ -88,7 +80,7 @@
                       <button type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-search search-icon"></span></button>
                     </span>
                   </div>
-                </form>
+                </form> -->
               {% endif %}
               <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
@@ -118,6 +110,8 @@
   <script src="{% static 'js/bootstrap-dropdownhover.min.js' %}"></script>
   <script src="{% static 'js/bootstrap-dropdownhover.min.js' %}"></script>
   <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+  <script src="{% static 'js/datepicker-fr.js' %}"></script>
+  <script src="{% static 'js/datatables.min.js' %}"></script>
   <script src="{% static 'js/app.js' %}"></script>
 	{% block bottom %}{% endblock %}
 </body>

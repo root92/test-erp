@@ -4,60 +4,40 @@
 
 {%block content%}
 
-<!-- <div class="container homepage-icons well"> 
-  <a href="{% url 'home-admission' %}">
-    <img src="{% static 'images/admissions.png' %}" alt="..." class="img-rounded">
-  </a>
-  <a href="">
-    <img src="{% static 'images/batchs.png' %}" alt="..." class="img-rounded">
-  </a>
-  <a href="">
-    <img src="{% static 'images/grade.png' %}" alt="..." class="img-rounded">
-  </a>
-  <a href="">
-    <img src="{% static 'images/fees.png' %}" alt="..." class="img-rounded">
-  </a>
-  <a href="">
-    <img src="{% static 'images/employees.png' %}" alt="..." class="img-rounded">
-  </a>
-  <a href="">
-    <img src="{% static 'images/settings.png' %}" alt="..." class="img-rounded">
-  </a>
-</div> -->
 <div class="container homepage-icons">
   <ul>
       <li>
       <a href="{% url 'registration' %}">
         <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
       </a>
-      <p>Admission</p>
+      <p>Admissions</p>
       </li>
       <li>
-      <a href="{% url 'home-admission' %}"> 
+      <a href="{% url 'home-student' %}"> 
         <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
       </a>
-      <p>Etudiants</p>
+      <p>Elèves</p>
       </li>
       <li>
-      <a href="{% url 'home-admission' %}">
+      <a href="">
         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
       </a>
       <p>Calendrier</p>
     </li>
      <li>
-      <a href="{% url 'home-admission' %}">
+      <a href="{% url 'payement' %}">
         <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
       </a>
       <p>Paiements</p>
     </li>
      <li>
-      <a href="{% url 'home-admission' %}">
+      <a href="">
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
       </a>
       <p>Inscriptions</p>
     </li>
      <li>
-      <a href="{% url 'home-admission' %}">
+      <a href="">
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       </a>
       <p>Configuration</p>

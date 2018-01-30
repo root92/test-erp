@@ -1,6 +1,8 @@
-import datetime
 from functools import wraps
 from django.utils import timezone
+
+import datetime
+
 
 def confirm_password(view_func):
     @wraps(view_func)

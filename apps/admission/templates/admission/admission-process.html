@@ -68,7 +68,7 @@
              </tr>
             </thead>
             <tbody>
-                {% for process in adprocess %}
+                {% for process in adprocess %} 
                 {% if process.commitee_decision != 'rejeté' %}
             <tr>
                 <td scope="row">{{forloop.counter}}</td>
@@ -144,9 +144,9 @@
                 <td class="">Nouveau</td> 
                 {% endif %}
                 {% if process.registree.registration_payement.count > 0 %}
-                 <td class="">Payés</td> 
+                 <td class="ok-status">Payés</td> 
                 {% else %}
-                 <td class="">Non payés</td> 
+                 <td class="no-status">Non payés</td> 
                 {% endif %}
 
 

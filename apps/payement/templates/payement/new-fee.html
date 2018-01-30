@@ -1,0 +1,90 @@
+{% include 'core/base.html' %}
+{% load static %}
+
+{% load permission_tags %}
+
+{% load humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+<link rel="stylesheet" href="{% static 'payement.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row container">
+    {% include 'payement/aside.html' %}
+    <div class="col-md-10">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li><a href="#">Frais</a></li>
+                <li class=""><a href="#">Liste des Frais</a></li>
+                <li class="active"><a href="#">nouveau Frais</a></li>
+            </ol>
+            <div class="">
+            </div>
+        </div>
+        <div class="panel panel-default ">
+            <div class="panel-body">
+                <form action="{% url 'new-fee'%}" method="POST" id="">
+                    {% csrf_token %}
+                    <div class="">
+                        <div class="">
+                            <span class="hide">{{ form.label.label_tag }}</span>
+                            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                                <span class="input-group-addon " id="sizing-addon3">Libellé Frais</span>
+                                {{form.label}}
+                            </div>
+                            {% for error in form.label.errors %}
+                            <div class="row">
+                                <div class="alert alert-danger alert-form-error">{{error}}</div>
+                            </div>
+                            <!-- <label class="control-label">{{ error }}</label> -->
+                            {% endfor %}
+                        </div>
+                        <div class="">
+                            <span class="hide">{{ form.fee_value.label_tag }}</span>
+                            <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                                <span class="input-group-addon " id="sizing-addon3">Valeur frais</span>
+                                {{ form.fee_value }}
+                            </div>
+                            {% for error in form.fee_value.errors %}
+                            <div class="row">
+                                <div class="alert alert-danger alert-form-error">{{error}}</div>
+                            </div>
+                            <!-- <label class="control-label">{{ error }}</label> -->
+                            {% endfor %}
+                        </div>
+                        <div class="">
+                            <span class="hide">{{ form.fee_description.label_tag }}</span>
+                            <div id="" style="padding-top: 10px;" >
+                                <div class="input-group-addon comment-label">Description</div>
+                                {{form.fee_description}}
+                            </div>
+                            <!-- {{ form.date_of_birth.errors }} -->
+                            {% for error in form.fee_description.errors %}
+                            <div class="row">
+                                <div class="alert alert-danger alert-form-error">{{error}}</div>
+                            </div>
+                            <!-- <label class="control-label">{{ error }}</label> -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                        <button class="btn btn-primary btn-sm" id="inscription-button" type="submit">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true">
+                        </span>Enregistrer</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-registration">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

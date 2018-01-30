@@ -92,25 +92,12 @@
               </div>
 
               <div>
-                <span class="hide">{{ form.course.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                <span class="input-group-addon " id="sizing-addon3">Programme</span>
-                  {{ form.course }}
-                </div>
-                  {% for error in form.course.errors %}
-                    <div class="row">
-                     <div class="alert alert-danger">{{error}}</div>
-                   </div>
-                  {% endfor %}
-                  <!-- {{ form.course.errors }} -->
-              </div>
-              <div>
-                <span class="hide">{{ form.course_level.label_tag }}</span>
+                <span class="hide">{{ form.class_level.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
                 <span class="input-group-addon " id="sizing-addon3">Niveau</span>
-                  {{ form.course_level }}
+                  {{ form.class_level }}
                 </div>
-                  {% for error in form.course_level.errors %}
+                  {% for error in form.class_level.errors %}
                     <div class="row">
                      <div class="alert alert-danger">{{error}}</div>
                    </div>
@@ -186,12 +173,12 @@
               </div>
 
               <div>
-                <span class="hide">{{ form.id_card_number.label_tag }}</span>
+                <span class="hide">{{ form.birth_certificate_number.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
                   <span class="input-group-addon " id="sizing-addon3">Numero Carte d'identité</span>
-                  {{form.id_card_number }}
+                  {{form.birth_certificate_number }}
                 </div>
-                  {% for error in form.id_card_number.errors %}
+                  {% for error in form.birth_certificate_number.errors %}
                     <div class="row">
                       <div class="alert alert-danger">{{error}}</div>
                     </div>
@@ -242,45 +229,7 @@
                   {% endfor %}
                   <!-- {{ form.school_origin.errors}} -->
               </div>
-              <div>
-                <span class="hide">{{ form.year_admission_bac.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Année Baccalauréat</span>
-                  {{ form.year_admission_bac }}
-                </div>
-                  {% for error in form.year_admission_bac.errors %}
-                    <div class="row">
-                      <div class="alert alert-danger">{{error}}</div>
-                    </div>
-                  {% endfor %}
-                  <!-- {{ form.year_admission_bac.errors}} -->
-              </div>
-              <div>
-                <span class="hide">{{ form.pv.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">PV Baccalauréat</span>
-                  {{ form.pv}}
-                </div>
-                  {% for error in form.pv.errors %}
-                    <div class="row">
-                      <div class="alert alert-danger">{{error}}</div>
-                    </div>
-                  {% endfor %}
-                   <!-- {{ form.pv.errors }} -->
-              </div>
-              <div>
-                <span class="hide">{{ form.option.label_tag }}</span>
-                <div id="options" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Options</span>
-                  {{ form.option}}
-                </div>
-                  {% for error in form.option.errors %}
-                    <div class="row">
-                      <div class="alert alert-danger">{{error}}</div>
-                    </div>
-                  {% endfor %}
-                  <!-- {{ form.option.errors}} -->
-              </div>
+             
             </div>
           </div>
         </div>

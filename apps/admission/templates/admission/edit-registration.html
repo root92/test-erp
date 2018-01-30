@@ -47,7 +47,7 @@
 
               <div>
                 <span class="hide">{{ form.gender.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                <div class="" style="padding-top: 10px;" >
                   <span class="input-group-addon " id="sizing-addon3">Genre</span>
                   {{ form.gender }}
                 </div>
@@ -61,22 +61,13 @@
                 </div>
                   {{ form.active_year.errors }}
               </div>
-
               <div>
-                <span class="hide">{{ form.course.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                <span class="input-group-addon " id="sizing-addon3">Programme</span>
-                  {{ form.course }}
-                </div>
-                {{ form.course.errors }}
-              </div>
-              <div>
-                <span class="hide">{{ form.course_level.label_tag }}</span>
+                <span class="hide">{{ form.class_level.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
                 <span class="input-group-addon " id="sizing-addon3">Niveau</span>
-                  {{ form.course_level }}
+                  {{ form.class_level }}
                 </div>
-                 {{ form.course_level.errors }}
+                 {{ form.class_level.errors }}
               </div>
             </div>
             <div class="col-md-4">
@@ -127,12 +118,12 @@
               </div>
 
               <div>
-                <span class="hide">{{ form.id_card_number.label_tag }}</span>
+                <span class="hide">{{ form.birth_certificate_number.label_tag }}</span>
                 <div class="input-group input-group-sm" style="padding-top: 10px;" >
                   <span class="input-group-addon " id="sizing-addon3">Numero Carte d'identité</span>
-                  {{form.id_card_number }}
+                  {{form.birth_certificate_number }}
                 </div>
-                 {{ form.id_card_number.errors }}
+                 {{ form.birth_certificate_number.errors }}
               </div>
               <div>
                <span class="hide"> {{ form.email.label_tag }}</span>
@@ -162,30 +153,6 @@
                   {{ form.school_origin }}
                 </div>
                   {{ form.school_origin.errors }}
-              </div>
-              <div>
-                <span class="hide">{{ form.year_admission_bac.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Année Baccalauréat</span>
-                  {{ form.year_admission_bac }}
-                </div>
-                  {{ form.year_admission_bac.errors}}
-              </div>
-              <div>
-                <span class="hide">{{ form.pv.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">PV Baccalauréat</span>
-                  {{ form.pv}}
-                </div>
-                   {{ form.pv.errors }}
-              </div>
-              <div>
-                <span class="hide">{{ form.option.label_tag }}</span>
-                <div class="input-group input-group-sm" style="padding-top: 10px;" >
-                  <span class="input-group-addon " id="sizing-addon3">Options</span>
-                  {{ form.option}}
-                </div>
-                  {{ form.option.errors}}
               </div>
             </div>
           </div>

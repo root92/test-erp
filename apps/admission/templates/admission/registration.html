@@ -19,29 +19,18 @@
             </ol>
             <div class="row">
             <div class="col-md-8">
-                <a class="btn btn-primary btn-sm" href="{% url 'register' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Ajouter</a>
+                <a class="btn btn-primary btn-sm" href="{% url 'register' %}">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    &nbsp;Ajouter
+                </a>
             </div>
             <div class="col-md-4">
-                <div class="input-group input-group-sm">
-                <!-- <input type="text" class="form-control" aria-label="..."> -->
-                <input type="text" class="form-control" aria-label="..." >
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> <span class="caret"></span></button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                    <li><input type="checkbox" aria-label="...">&nbsp;Date</li>
-                    <li><input type="checkbox" aria-label="...">&nbsp;Numero de saisie</li>
-                    <li><input type="checkbox" aria-label="...">&nbsp;Prenom</li>
-                    <li><input type="checkbox" aria-label="...">&nbsp;Nom</li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    </ul>
-                </div><!-- /btn-group -->
-                </div><!-- /input-group -->
+                
             </div>
             </div>
-
+        
         </div>
-        <div class="panel panel-primary">
+        <div class="panel panel-primary panel-pages">
             <!-- Default panel contents -->
             <div class="panel-heading">Liste des personnes saisies
             </div>
@@ -50,7 +39,7 @@
             </div>
             <!-- <button type="button" class="btn btn-primary" (click)="onCreate">Create</button> -->
             <!-- Table -->
-            <table class="table table-bordered table-sm">
+            <table class="table table-bordered table-sm" id="registration-table">
             <thead>
                 <tr>
                 <!-- <th><input class="form-check-input" type="checkbox" value=""></th> -->
@@ -78,9 +67,9 @@
                             </li>
                             <li>
                                  {% if registration.process_registree.id %}
-                                 <a class="hide" style="background-color: #e3e3e3; color: black;">
-                                     Déjà Admis(e)
-                                 </a>
+                                 <a href="" class="hide">
+                                    Processus d'admission
+                                </a>
 
                                  {% else %}
                                   {% if user|has_role:'head_admission_service' %}
@@ -94,20 +83,20 @@
                                 {% endif %}
                                 {% endif %}
                             </li>
-
+                           
                         </ul>
-
+                    
                 </td>
                 <td>{{registration.first_name}}</td>
                 <td>{{registration.last_name}}</td>
                 {% if registration.process_registree.commitee_decision == 'approuvé' %}
-                  <td class="registree-status" style='color: blue;'> Admis</td>
+                  <td class="registree-status ok-status"> Admis</td>
                 {% elif registration.process_registree.commitee_decision == 'approved' %}
-                  <td class="registree-status"> Admis</td>
+                  <td class="registree-status ok-status"> Admis</td>
                 {% elif registration.process_registree.commitee_decision == 'Rejeté' %}
-                  <td class="registree-status" style="color:red;"> Rejeté</td>
+                  <td class="registree-status no-status"> Rejeté</td>
                 {% elif registration.process_registree.commitee_decision == 'rejeté' %}
-                  <td class="registree-status" style="color:red;"> Rejeté</td>
+                  <td class="registree-status no-status"> Rejeté</td>
                 {% else %}
                   <td class="registree-status"> Nouveau</td>
                 {% endif %}
@@ -116,15 +105,18 @@
             {% endfor %}
 
             </tbody>
-
+        
             </table>
-
+        
             <!-- <app-registree-details [item]="selectedItem"></app-registree-details> -->
-
+        
         </div>
-
-
+        
+    
     </div>
 </div>
 
+{% endblock %}
+{% block bottom %}
+  <script src="{% static 'admission.js' %}"></script>
 {% endblock %}

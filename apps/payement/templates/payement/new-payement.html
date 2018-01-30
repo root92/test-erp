@@ -1,0 +1,88 @@
+{% include 'core/base.html' %}
+{% load static %}
+
+{% load permission_tags %}
+
+{% load humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+<link rel="stylesheet" href="{% static 'payement.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row container">
+    {% include 'payement/aside.html' %}
+    <div class="col-md-10">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li><a href="#">Paiements</a></li>
+                <li class=""><a href="#">Liste des paiements</a></li>
+                <li class="active"><a href="#">nouveau paiement</a></li>
+            </ol>
+            <div class="">
+            </div>
+        </div>
+
+        <div class="panel panel-default ">
+            <div class="panel-body">
+                <form action="{% url 'new-payement'%}" method="POST">
+                    {% csrf_token %}
+                    <div class="">
+                        <span class="hide">{{ form.student.label_tag }}</span>
+                        <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                            <span class="input-group-addon " id="sizing-addon3">Elève</span>
+                            {{form.student}}
+                        </div>
+                        {% for error in form.student.errors %}
+                        <div class="row">
+                            <div class="alert alert-danger alert-form-error">{{error}}</div>
+                        </div>
+                        <!-- <label class="control-label">{{ error }}</label> -->
+                        {% endfor %}
+                    </div>
+                    <div class="">
+                        <span class="hide">{{ form.fees.label_tag }}</span>
+                        <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                            <span class="input-group-addon " id="sizing-addon3">Frais</span>
+                            {{ form.fees }}
+                        </div>
+                        {% for error in form.fees.errors %}
+                        <div class="row">
+                            <div class="alert alert-danger alert-form-error">{{error}}</div>
+                        </div>
+                        <!-- <label class="control-label">{{ error }}</label> -->
+                        {% endfor %}
+                    </div>
+                    <div class="">
+                        <span class="hide">{{ form.amount.label_tag }}</span>
+                        <div class="input-group input-group-sm" style="padding-top: 10px;" >
+                            <span class="input-group-addon " id="sizing-addon3">Montant payé</span>
+                            {{ form.amount }}
+                        </div>
+                        {% for error in form.amount.errors %}
+                        <div class="row">
+                            <div class="alert alert-danger alert-form-error">{{error}}</div>
+                        </div>
+                        <!-- <label class="control-label">{{ error }}</label> -->
+                        {% endfor %}
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="inscription-button" type="submit">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true">
+                        </span>Enregistrer</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-registration">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

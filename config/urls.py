@@ -33,8 +33,8 @@ urlpatterns = [
     url(r'^logout', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^admission/', include('apps.admission.urls')),
     url(r'^dep_home/', include('apps.departement.urls')),
-    # url(r'^student_list/', include('apps.students.urls')),
-    
+    url(r'^students/', include('apps.student.urls')),
+    url(r'^paiements/', include('apps.payement.urls')),
 ]
 
 

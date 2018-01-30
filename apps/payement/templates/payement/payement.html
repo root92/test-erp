@@ -1,0 +1,52 @@
+{% include 'core/base.html' %}
+{% load static %}
+
+{% load permission_tags %}
+
+{% load humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'payement.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row detail-page registration-page">
+    {% include 'payement/aside.html' %}
+    <div class="col-md-10">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li><a href="#">Paiements</a></li>
+                <li class="active"><a href="#">Liste des paiements</a></li>
+            </ol>
+            <div class="row">
+                <div class="col-md-8">
+                    <a class="btn btn-primary btn-sm" href="{% url 'new-payement' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        &nbsp;Nouveau Paiement
+                    </a>
+            </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default ">
+            <div class="panel-body">
+                <div class="row">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-registration">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

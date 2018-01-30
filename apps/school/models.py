@@ -1,7 +1,7 @@
 from django.db import models
 
-# Create your models here.
 
+# Create your models here.
 class School(models.Model):
     school_name = models.CharField(max_length=100)
     school_abreviation = models.CharField(max_length=10)
@@ -15,11 +15,9 @@ class School(models.Model):
     school_add_date = models.DateTimeField(auto_now_add=True)
     school_modify_date = models.DateTimeField(auto_now=True)
 
-    # class Meta:
-    #     unique_together = ('email')
-
     def __str__(self):
         return '{0} {1}'.format(self.school_name, self.school_abreviation)
+
 
 class AcademicYear(models.Model):
     start_date = models.DateField()
@@ -28,7 +26,6 @@ class AcademicYear(models.Model):
     # school_name = models.ForeignKey(School, on_delete=models.CASCADE)
     academicYear_add_date = models.DateTimeField(auto_now_add=True)
     academicYear_modify_date = models.DateTimeField(auto_now=True)
-
 
     def __str__(self):
         return (self.label) 
@@ -39,3 +36,4 @@ class ActiveAcademicYear(models.Model):
     
     def __str__(self):
         return (self.academic_year.label)
+  

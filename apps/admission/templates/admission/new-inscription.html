@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load permission_tags %}
+{% load humanize %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'admission.css' %}">
@@ -29,16 +30,16 @@
 
     <div class="row">
     <div class="col-md-4">
-    <form action="" method="POST" id="admission-process-form">
+    <form action="{% url 'new-inscription' registration.id %}" method="POST" id="admission-process-form">
       {% csrf_token %}
         <div class="">
-          <span class="hide">{{ form.registry.label_tag }}</span>
+          <span class="hide">{{ form.registree.label_tag }}</span>
           <div class="input-group input-group-sm" style="padding-top: 10px;" >
             <span class="input-group-addon " id="sizing-addon3">Identifiant Personne saisie</span>
-            {{form.registry}}
+            {{form.registree}}
           </div>
           <!-- {{ form.date_of_birth.errors }} -->
-           {% for error in form.registry.errors %}
+           {% for error in form.registree.errors %}
               <div class="row">
                <div class="alert alert-danger alert-form-error">{{error}}</div>
              </div>
@@ -59,6 +60,20 @@
             <!-- <label class="control-label">{{ error }}</label> -->
             {% endfor %}
        </div>
+       <div class="">
+          <span class="hide">{{ form.class_level.label_tag }}</span>
+          <div class="input-group input-group-sm" style="padding-top: 10px;" >
+            <span class="input-group-addon " id="sizing-addon3">Classe</span>
+            {{form.class_level}}
+          </div>
+          <!-- {{ form.date_of_birth.errors }} -->
+           {% for error in form.class_level.errors %}
+              <div class="row">
+               <div class="alert alert-danger alert-form-error">{{error}}</div>
+             </div>
+            <!-- <label class="control-label">{{ error }}</label> -->
+            {% endfor %}
+       </div>
        <button class="btn btn-primary btn-sm" id="inscription-button" type="submit"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Inscrire</button>
 
       <!-- {{ form.as_p}} -->
@@ -69,27 +84,28 @@
     <div class="col-md-7">
       <div class="panel panel-default" id="inscription-panel">
       <!-- Default panel contents -->
-      <div class="panel-heading">Information Additionnels sur {{registration.first_name}} {{registration.last_name}}</div>
+      <div class="panel-heading">Informations Additionnelles sur 
+        {{registration.registree.first_name}} {{registration.registree.last_name}}</div>
 
       <table class="table table-bordered table-sm" >
             <thead>
                 <tr>
                 <th>numero de saisie</th>
-                <th>Formation</th>
-                <th>Programme</th>
+                <th>classe</th>
                 <th>date de paiement</th>
+                <th>Type de frais</th>
                 <th>Montant payé</th>
         
              </tr>
             </thead>
             <tbody>
             <tr>
-                <td>{{registration.registry_number }}</td>
-                <td>{{registration.course}}</td>
-                <td>{{registration.course_level}}</td>
+                <td>{{registration.registree.registry_number }}</td>
+                <td>{{registration.registree.class_level}}</td>
                 {% for info in reg_payement %}
-                <td>{{ info.date}}</td>
-                <td>{{ info.amount }}</td>
+                <td>{{ info.payement_date}}</td>
+                <td>{{ info.fees.label }}</td>
+                <td>{{ info.fees.fee_value|intcomma }}</td>
                 {% endfor %}
             </tr>
 

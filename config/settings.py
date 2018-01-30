@@ -48,8 +48,9 @@ INSTALLED_APPS = [
     'apps.departement.apps.DepartementConfig',
     'apps.admission.apps.AdmissionConfig',
     'apps.school.apps.SchoolConfig',
-    'apps.students.apps.StudentsConfig',
+    'apps.student.apps.StudentsConfig',
     'apps.core',
+    'apps.payement',
     'rolepermissions',
     # 'apps.humans_ressources.apps.HumansRessourcesConfig',
 ]

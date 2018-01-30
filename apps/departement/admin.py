@@ -1,24 +1,18 @@
 from django.contrib import admin
-from .models import Department, Course, ClassRoom, CourseLevel
+from .models import ClassLevel, Subject, ClassRoom
 
 
-@admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('name', 'class_level')
 
-    list_display = ('name', 'department', )
 
-@admin.register(Department)
-class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ('code', 'name', 'description')
+@admin.register(ClassLevel)
+class ClasslevelAdmin(admin.ModelAdmin):
+    list_display = ('label', 'description')
 
 
 @admin.register(ClassRoom)
 class ClassRoomAdmin(admin.ModelAdmin):
-    list_display = ('cr_code', 'cr_label', 'department')
+    list_display = ('code', 'label')
     # list_filter = ('cr_code', 'cr_label')
-
-
-# admin.site.register(Department)
-admin.site.register(CourseLevel)
-
-

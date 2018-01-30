@@ -1,0 +1,88 @@
+{% include 'core/base.html' %}
+{% load static %}
+{% load admission_tags %}
+{% load permission_tags %}
+
+{% load humanize %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'admission.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row admission-process registration-page">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <div class="page-header">
+            <ol class="breadcrumb">
+            <li><a href="#">Elèves</a></li>
+            <li class="active">Liste des Elèves</li>
+            </ol>
+        
+        </div>
+        <div class="panel panel-primary panel-pages">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Liste des Elèves
+            </div>
+            <div class="panel-body">
+            <p>...</p>
+            </div>
+            <!-- <button type="button" class="btn btn-primary" (click)="onCreate">Create</button> -->
+            <!-- Table -->
+            <table class="table table-bordered table-sm" id="student-table">
+            <thead>
+                <tr>
+                <!-- <th><input class="form-check-input" type="checkbox" value=""></th> -->
+                <th scope="col">N<sup>o</sup></th>
+                <th>Date d'inscription</th>
+                <th>Nom de l'Elèvet</th>
+                <th>Matricule de l'Elève</th>
+                <th>Classe</th>
+             </tr>
+            </thead>
+            <tbody>
+                {% for inscription in inscriptions %}
+            <tr>
+                <td scope="row">{{forloop.counter}}</td>
+                <td>{{inscription.inscription_add_date|date:"DATE_FORMAT" }}</td>
+                <td>{{inscription.registree.registree.first_name }}
+                    {{inscription.registree.registree.last_name }}
+                </td>
+                <td class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"
+                    data-hover="dropdown" aria-haspopup="true" aria-expanded="true"
+                    id="registrationMenu">{{inscription.registree.matricule}}
+                    </a>
+                        <ul class="dropdown-menu registration-menu" aria-labelledby="registrationMenu" id="regist-menu">
+                            <li>
+                                <a href="{% url 'student-detail' inscription.id  %}" class="">
+                                    Dossier de l'Elève {{inscription.registree.registree.first_name}}
+                                    {{inscription.registree.registree.last_name}}
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    
+                </td>
+                <td>{{ inscription.class_level}}</td>
+
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        
+            </table>
+        
+        </div>
+        
+        <!-- Modal -->
+       
+    </div>
+</div>
+
+{% endblock %}
+{% block bottom %}
+  <script src="{% static 'admission.js' %}"></script>
+{% endblock %}
